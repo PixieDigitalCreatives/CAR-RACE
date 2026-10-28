@@ -39,8 +39,8 @@ namespace ThegameioRacing.EditorTools
             Texture2D appIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Art/Textures/UI/tex_gameium_app_icon.png");
             if (appIcon != null)
             {
-                PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Unknown, new Texture2D[] { appIcon });
-                PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new Texture2D[] { appIcon });
+                PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Unknown, new Texture2D[] { appIcon }, IconKind.Any);
+                PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Android, new Texture2D[] { appIcon }, IconKind.Any);
             }
 
             Debug.Log("[GAMEIUM] Android Player Settings successfully configured.");
@@ -59,6 +59,9 @@ namespace ThegameioRacing.EditorTools
             {
                 "Assets/_Project/Scenes/MainMenu.unity",
                 "Assets/_Project/Scenes/DowntownCircuit.unity",
+                "Assets/_Project/Scenes/WaterfrontRun.unity",
+                "Assets/_Project/Scenes/MarketDistrict.unity",
+                "Assets/_Project/Scenes/IndustrialPort.unity",
                 "Assets/_Project/Scenes/SampleStreet_GateA.unity",
                 "Assets/_Project/Scenes/VehiclePhysicsTest.unity"
             };
@@ -156,6 +159,9 @@ namespace ThegameioRacing.EditorTools
             {
                 "Assets/_Project/Scenes/MainMenu.unity",
                 "Assets/_Project/Scenes/DowntownCircuit.unity",
+                "Assets/_Project/Scenes/WaterfrontRun.unity",
+                "Assets/_Project/Scenes/MarketDistrict.unity",
+                "Assets/_Project/Scenes/IndustrialPort.unity",
                 "Assets/_Project/Scenes/SampleStreet_GateA.unity",
                 "Assets/_Project/Scenes/VehiclePhysicsTest.unity"
             };

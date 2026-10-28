@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/DowntownCircuit.unity
     guid: 858bf400728e4f638ff6806b56630760
   - enabled: 1
+    path: Assets/_Project/Scenes/WaterfrontRun.unity
+    guid: d5f84b674b3e4ac8e816cae577a04004
+  - enabled: 1
+    path: Assets/_Project/Scenes/MarketDistrict.unity
+    guid: e6a95c785c4f4bd9f927dbf688b05005
+  - enabled: 1
+    path: Assets/_Project/Scenes/IndustrialPort.unity
+    guid: f7b06d896d5a4ceaa038ec0799c06006
+  - enabled: 1
     path: Assets/_Project/Scenes/SampleStreet_GateA.unity
     guid: 5954f884e7694127a5e7e36fc9012b37
   - enabled: 1

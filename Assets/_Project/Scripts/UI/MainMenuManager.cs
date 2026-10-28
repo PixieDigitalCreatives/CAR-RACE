@@ -315,12 +315,12 @@ namespace ThegameioRacing.UI
             string[] trackNames = new string[] { "Downtown Circuit", "Waterfront Run", "Market District", "Industrial Port" };
             string[] trackSpecs = new string[] { 
                 "1.6 km | 2 Laps\nAfrican Coastal Metropolis\n[PLAYABLE NOW]", 
-                "2.2 km | 2 Laps\nHigh-Speed Ocean Sweep\n[IN DEVELOPMENT]", 
-                "1.4 km | Technical Chicanes\nBustling Market District\n[IN DEVELOPMENT]", 
-                "1.8 km | Shipping Docks\nHarbor Container Circuit\n[IN DEVELOPMENT]" 
+                "2.2 km | 2 Laps\nHigh-Speed Ocean Sweep\n[PLAYABLE NOW]", 
+                "1.4 km | Technical Chicanes\nBustling Market District\n[PLAYABLE NOW]", 
+                "1.8 km | Shipping Docks\nHarbor Container Circuit\n[PLAYABLE NOW]" 
             };
-            string[] sceneTargets = new string[] { "DowntownCircuit", "", "", "" };
-            bool[] isPlayable = new bool[] { true, false, false, false };
+            string[] sceneTargets = new string[] { "DowntownCircuit", "WaterfrontRun", "MarketDistrict", "IndustrialPort" };
+            bool[] isPlayable = new bool[] { true, true, true, true };
 
             for (int i = 0; i < 4; i++)
             {

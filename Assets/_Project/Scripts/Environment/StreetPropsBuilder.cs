@@ -756,5 +756,335 @@ namespace ThegameioRacing.Environment
 
             return signRoot;
         }
+
+        // =================================================================================
+        // 10. COASTAL PALM TREE (WATERFRONT PROMENADE)
+        // =================================================================================
+
+        public static GameObject CreatePalmTree(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matBark = null,
+            Material matFronds = null,
+            float height = 9f)
+        {
+            GameObject palmRoot = new GameObject("Coastal_PalmTree");
+            palmRoot.transform.SetParent(parent, false);
+            palmRoot.transform.position = position;
+            palmRoot.transform.rotation = rotation;
+
+            // Curved trunk segments
+            float segH = height * 0.35f;
+            Vector3[] trunkOffsets = new Vector3[]
+            {
+                new Vector3(0f, segH * 0.5f, 0f),
+                new Vector3(0.25f, segH * 1.4f, 0.1f),
+                new Vector3(0.65f, segH * 2.2f, 0.25f)
+            };
+            Vector3[] trunkAngles = new Vector3[]
+            {
+                new Vector3(2f, 0f, -4f),
+                new Vector3(4f, 0f, -8f),
+                new Vector3(6f, 0f, -12f)
+            };
+
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject seg = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                seg.name = $"Trunk_Seg_{i}";
+                seg.transform.SetParent(palmRoot.transform, false);
+                seg.transform.localPosition = trunkOffsets[i];
+                seg.transform.localRotation = Quaternion.Euler(trunkAngles[i]);
+                float taper = 0.42f - (i * 0.08f);
+                seg.transform.localScale = new Vector3(taper, segH * 0.5f, taper);
+                if (matBark != null) seg.GetComponent<Renderer>().sharedMaterial = matBark;
+            }
+
+            // Crown fronds
+            Vector3 crownPos = trunkOffsets[2] + new Vector3(0.2f, segH * 0.5f, 0.1f);
+            for (int f = 0; f < 8; f++)
+            {
+                float angle = f * 45f;
+                GameObject frond = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                frond.name = $"Frond_{f}";
+                frond.transform.SetParent(palmRoot.transform, false);
+                frond.transform.localPosition = crownPos + Quaternion.Euler(0f, angle, 0f) * new Vector3(1.2f, -0.2f, 0f);
+                frond.transform.localRotation = Quaternion.Euler(20f, angle, 0f);
+                frond.transform.localScale = new Vector3(2.6f, 0.08f, 0.75f);
+                Object.DestroyImmediate(frond.GetComponent<Collider>());
+                if (matFronds != null) frond.GetComponent<Renderer>().sharedMaterial = matFronds;
+            }
+
+            return palmRoot;
+        }
+
+        // =================================================================================
+        // 11. COASTAL SEAWALL & OCEAN WATER PLANE
+        // =================================================================================
+
+        public static GameObject CreateCoastalSeawall(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            float length,
+            Material matStone,
+            Material matMetal)
+        {
+            GameObject wallRoot = new GameObject("Coastal_Seawall");
+            wallRoot.transform.SetParent(parent, false);
+            wallRoot.transform.position = position;
+            wallRoot.transform.rotation = rotation;
+
+            float wallH = 1.6f;
+            float wallW = 0.85f;
+
+            // Concrete seawall foundation block
+            GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            wall.name = "Seawall_Block";
+            wall.transform.SetParent(wallRoot.transform, false);
+            wall.transform.localPosition = new Vector3(0f, wallH * 0.5f, 0f);
+            wall.transform.localScale = new Vector3(wallW, wallH, length);
+            if (matStone != null) wall.GetComponent<Renderer>().sharedMaterial = matStone;
+
+            // Stainless Steel Promenade Handrail
+            GameObject railTop = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            railTop.name = "Promenade_RailTop";
+            railTop.transform.SetParent(wallRoot.transform, false);
+            railTop.transform.localPosition = new Vector3(0f, wallH + 0.55f, 0f);
+            railTop.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            railTop.transform.localScale = new Vector3(0.08f, length * 0.5f, 0.08f);
+            if (matMetal != null) railTop.GetComponent<Renderer>().sharedMaterial = matMetal;
+
+            // Stanchions every 4m
+            int postCount = Mathf.FloorToInt(length / 4f);
+            for (int p = 0; p <= postCount; p++)
+            {
+                float pz = -length * 0.5f + p * 4f;
+                GameObject post = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                post.name = $"Rail_Post_{p}";
+                post.transform.SetParent(wallRoot.transform, false);
+                post.transform.localPosition = new Vector3(0f, wallH + 0.28f, pz);
+                post.transform.localScale = new Vector3(0.06f, 0.28f, 0.06f);
+                if (matMetal != null) post.GetComponent<Renderer>().sharedMaterial = matMetal;
+            }
+
+            return wallRoot;
+        }
+
+        public static GameObject CreateOceanWaterPlane(
+            Transform parent,
+            Vector3 position,
+            Vector2 size,
+            Material matWater)
+        {
+            GameObject waterObj = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            waterObj.name = "Ocean_Water_Plane";
+            waterObj.transform.SetParent(parent, false);
+            waterObj.transform.position = position;
+            waterObj.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            waterObj.transform.localScale = new Vector3(size.x, size.y, 1f);
+            Object.DestroyImmediate(waterObj.GetComponent<Collider>());
+            if (matWater != null) waterObj.GetComponent<Renderer>().sharedMaterial = matWater;
+            return waterObj;
+        }
+
+        // =================================================================================
+        // 12. MARKET STALL & CANOPY BOOTH (MARKET DISTRICT)
+        // =================================================================================
+
+        public static GameObject CreateMarketStall(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matWood,
+            Material matAwning,
+            string stallName = "Market_Stall")
+        {
+            GameObject stallRoot = new GameObject($"Stall_{stallName}");
+            stallRoot.transform.SetParent(parent, false);
+            stallRoot.transform.position = position;
+            stallRoot.transform.rotation = rotation;
+
+            float w = 4.2f;
+            float h = 2.8f;
+            float d = 3.2f;
+
+            // Wooden Counter Table
+            GameObject table = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            table.name = "Display_Table";
+            table.transform.SetParent(stallRoot.transform, false);
+            table.transform.localPosition = new Vector3(0f, 0.55f, 0f);
+            table.transform.localScale = new Vector3(w, 1.1f, d * 0.7f);
+            if (matWood != null) table.GetComponent<Renderer>().sharedMaterial = matWood;
+
+            // Striped Canvas Canopy Roof
+            GameObject canopy = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            canopy.name = "Canopy_Roof";
+            canopy.transform.SetParent(stallRoot.transform, false);
+            canopy.transform.localPosition = new Vector3(0f, h, 0f);
+            canopy.transform.localRotation = Quaternion.Euler(14f, 0f, 0f);
+            canopy.transform.localScale = new Vector3(w + 0.6f, 0.08f, d + 0.6f);
+            if (matAwning != null) canopy.GetComponent<Renderer>().sharedMaterial = matAwning;
+
+            // Warm Hanging Lantern
+            GameObject lantern = new GameObject("Stall_Lantern");
+            lantern.transform.SetParent(stallRoot.transform, false);
+            lantern.transform.localPosition = new Vector3(0f, h - 0.35f, 0f);
+            Light l = lantern.AddComponent<Light>();
+            l.type = LightType.Point;
+            l.color = new Color(1f, 0.78f, 0.40f);
+            l.intensity = 8f;
+            l.range = 7f;
+            l.shadows = LightShadows.None;
+
+            return stallRoot;
+        }
+
+        // =================================================================================
+        // 13. SHIPPING CONTAINER & GANTRY CRANE (INDUSTRIAL PORT)
+        // =================================================================================
+
+        public static GameObject CreateShippingContainer(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matContainer,
+            float length = 6.0f)
+        {
+            GameObject container = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            container.name = "Shipping_Container";
+            container.transform.SetParent(parent, false);
+            container.transform.position = position;
+            container.transform.rotation = rotation;
+            container.transform.localScale = new Vector3(2.44f, 2.59f, length);
+            if (matContainer != null) container.GetComponent<Renderer>().sharedMaterial = matContainer;
+            return container;
+        }
+
+        public static GameObject CreateCargoGantryCrane(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matSteel,
+            Material matYellow)
+        {
+            GameObject craneRoot = new GameObject("Port_Gantry_Crane");
+            craneRoot.transform.SetParent(parent, false);
+            craneRoot.transform.position = position;
+            craneRoot.transform.rotation = rotation;
+
+            float span = 24f;
+            float gantryH = 20f;
+
+            // Left & Right Portal Towers
+            for (int side = -1; side <= 1; side += 2)
+            {
+                float x = side * (span * 0.5f);
+                GameObject tower = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                tower.name = $"Portal_Leg_{side}";
+                tower.transform.SetParent(craneRoot.transform, false);
+                tower.transform.localPosition = new Vector3(x, gantryH * 0.5f, 0f);
+                tower.transform.localScale = new Vector3(1.8f, gantryH, 2.2f);
+                if (matSteel != null) tower.GetComponent<Renderer>().sharedMaterial = matSteel;
+            }
+
+            // Top Gantry Crossbeam (High-Visibility Safety Yellow)
+            GameObject beam = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            beam.name = "Gantry_Crossbeam";
+            beam.transform.SetParent(craneRoot.transform, false);
+            beam.transform.localPosition = new Vector3(0f, gantryH + 0.9f, 0f);
+            beam.transform.localScale = new Vector3(span + 3f, 1.8f, 2.5f);
+            if (matYellow != null) beam.GetComponent<Renderer>().sharedMaterial = matYellow;
+
+            // Machinery Cab
+            GameObject cab = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cab.name = "Operator_Cab";
+            cab.transform.SetParent(craneRoot.transform, false);
+            cab.transform.localPosition = new Vector3(-4f, gantryH - 1.2f, 0f);
+            cab.transform.localScale = new Vector3(3.2f, 2.2f, 2.8f);
+            if (matSteel != null) cab.GetComponent<Renderer>().sharedMaterial = matSteel;
+
+            // Downward High-Intensity Floodlight
+            GameObject floodObj = new GameObject("Gantry_Floodlight");
+            floodObj.transform.SetParent(craneRoot.transform, false);
+            floodObj.transform.localPosition = new Vector3(0f, gantryH - 0.2f, 0f);
+            floodObj.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            Light fl = floodObj.AddComponent<Light>();
+            fl.type = LightType.Spot;
+            fl.color = new Color(0.95f, 0.98f, 1.0f);
+            fl.intensity = 25f;
+            fl.range = 35f;
+            fl.spotAngle = 75f;
+            fl.shadows = LightShadows.None;
+
+            return craneRoot;
+        }
+
+        public static GameObject CreateFloodlightTower(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matSteel,
+            Material matBulb,
+            float height = 15f)
+        {
+            GameObject mastRoot = new GameObject("Industrial_FloodlightTower");
+            mastRoot.transform.SetParent(parent, false);
+            mastRoot.transform.position = position;
+            mastRoot.transform.rotation = rotation;
+
+            // Tower Mast
+            GameObject mast = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            mast.name = "Tower_Mast";
+            mast.transform.SetParent(mastRoot.transform, false);
+            mast.transform.localPosition = new Vector3(0f, height * 0.5f, 0f);
+            mast.transform.localScale = new Vector3(0.45f, height * 0.5f, 0.45f);
+            if (matSteel != null) mast.GetComponent<Renderer>().sharedMaterial = matSteel;
+
+            // Crossbar
+            GameObject bar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            bar.name = "Light_Crossbar";
+            bar.transform.SetParent(mastRoot.transform, false);
+            bar.transform.localPosition = new Vector3(0f, height + 0.3f, 0f);
+            bar.transform.localScale = new Vector3(3.8f, 0.3f, 0.4f);
+            if (matSteel != null) bar.GetComponent<Renderer>().sharedMaterial = matSteel;
+
+            // 4 Floodlights
+            for (int i = 0; i < 4; i++)
+            {
+                float bx = -1.35f + i * 0.9f;
+                GameObject lamp = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                lamp.name = $"Lamp_Head_{i}";
+                lamp.transform.SetParent(bar.transform, false);
+                lamp.transform.localPosition = new Vector3(bx, 0.35f, 0f);
+                lamp.transform.localRotation = Quaternion.Euler(30f, 0f, 0f);
+                lamp.transform.localScale = new Vector3(0.6f, 0.5f, 0.3f);
+                if (matSteel != null) lamp.GetComponent<Renderer>().sharedMaterial = matSteel;
+
+                GameObject bulb = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                bulb.name = "Bulb";
+                bulb.transform.SetParent(lamp.transform, false);
+                bulb.transform.localPosition = new Vector3(0f, 0f, -0.52f);
+                bulb.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+                bulb.transform.localScale = new Vector3(0.9f, 0.9f, 1f);
+                Object.DestroyImmediate(bulb.GetComponent<Collider>());
+                if (matBulb != null) bulb.GetComponent<Renderer>().sharedMaterial = matBulb;
+            }
+
+            // Downward Spotlight
+            GameObject spotObj = new GameObject("Tower_Spotlight");
+            spotObj.transform.SetParent(mastRoot.transform, false);
+            spotObj.transform.localPosition = new Vector3(0f, height, 0f);
+            spotObj.transform.localRotation = Quaternion.Euler(45f, 0f, 0f);
+            Light sp = spotObj.AddComponent<Light>();
+            sp.type = LightType.Spot;
+            sp.color = new Color(0.9f, 0.95f, 1f);
+            sp.intensity = 30f;
+            sp.range = 38f;
+            sp.spotAngle = 80f;
+
+            return mastRoot;
+        }
     }
 }
