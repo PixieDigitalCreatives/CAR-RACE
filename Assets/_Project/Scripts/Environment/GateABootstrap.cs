@@ -1,3 +1,5 @@
+#pragma warning disable 0649
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,7 +78,7 @@ namespace ThegameioRacing.Environment
 
         private void EnsureEventSystem()
         {
-            if (FindFirstObjectByType<EventSystem>() == null)
+            if (FindAnyObjectByType<EventSystem>() == null)
             {
                 GameObject esObj = new GameObject("EventSystem");
                 esObj.AddComponent<EventSystem>();
@@ -530,7 +532,7 @@ namespace ThegameioRacing.Environment
 
         private void BuildGameHUD(VehicleController car, VehicleInputReader inputReader)
         {
-            if (FindFirstObjectByType<HUDController>() != null) return;
+            if (FindAnyObjectByType<HUDController>() != null) return;
 
             GameObject canvasObj = new GameObject("Canvas_HUD");
             Canvas canvas = canvasObj.AddComponent<Canvas>();

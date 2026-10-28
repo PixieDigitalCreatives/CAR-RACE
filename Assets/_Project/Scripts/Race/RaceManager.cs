@@ -58,7 +58,7 @@ namespace ThegameioRacing.Race
 
             if (checkpointManager == null)
             {
-                checkpointManager = GetComponentInChildren<CheckpointManager>() ?? FindFirstObjectByType<CheckpointManager>();
+                checkpointManager = GetComponentInChildren<CheckpointManager>() ?? FindAnyObjectByType<CheckpointManager>();
             }
         }
 

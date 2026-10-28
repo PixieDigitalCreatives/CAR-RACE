@@ -19,7 +19,7 @@ namespace ThegameioRacing.UI
         {
             if (inputReader == null)
             {
-                inputReader = FindFirstObjectByType<VehicleInputReader>();
+                inputReader = FindAnyObjectByType<VehicleInputReader>();
             }
         }
 
@@ -27,7 +27,7 @@ namespace ThegameioRacing.UI
         {
             if (inputReader == null)
             {
-                inputReader = FindFirstObjectByType<VehicleInputReader>();
+                inputReader = FindAnyObjectByType<VehicleInputReader>();
                 if (inputReader == null) return;
             }
 

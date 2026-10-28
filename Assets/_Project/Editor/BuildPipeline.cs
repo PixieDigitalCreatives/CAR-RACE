@@ -28,7 +28,7 @@ namespace ThegameioRacing.EditorTools
             PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
 
             // Target Android Config
-            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24; // Android 7.0+
+            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel26; // Android 8.0+
             PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
 
             // Rendering & Performance
@@ -123,7 +123,6 @@ namespace ThegameioRacing.EditorTools
                 Debug.LogError($"[GAMEIUM] Windows build FAILED with {summary.totalErrors} errors.");
             }
         }
-    }
 
         [MenuItem("Tools/GAMEIUM/Configure WebGL Project Settings", false, 13)]
         public static void ConfigureWebGLSettings()
@@ -190,5 +189,5 @@ namespace ThegameioRacing.EditorTools
                 Debug.LogError($"[GAMEIUM] WebGL build execution exception: {ex.Message}");
             }
         }
-
+    }
 }

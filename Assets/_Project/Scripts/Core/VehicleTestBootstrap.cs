@@ -1,3 +1,5 @@
+#pragma warning disable 0649
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,7 +72,7 @@ namespace ThegameioRacing.Core
 
         private void EnsureEventSystem()
         {
-            if (FindFirstObjectByType<EventSystem>() == null)
+            if (FindAnyObjectByType<EventSystem>() == null)
             {
                 GameObject esObj = new GameObject("EventSystem");
                 esObj.AddComponent<EventSystem>();

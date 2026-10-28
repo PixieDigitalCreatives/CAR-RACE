@@ -1,3 +1,5 @@
+#pragma warning disable 0649
+
 using UnityEngine;
 using UnityEngine.UI;
 using ThegameioRacing.Vehicle;
@@ -34,7 +36,7 @@ namespace ThegameioRacing.UI
         {
             if (targetVehicle == null)
             {
-                targetVehicle = FindFirstObjectByType<VehicleController>();
+                targetVehicle = FindAnyObjectByType<VehicleController>();
             }
 
             if (controlsHelpText != null)
@@ -165,7 +167,7 @@ namespace ThegameioRacing.UI
         {
             if (targetVehicle == null)
             {
-                targetVehicle = FindFirstObjectByType<VehicleController>();
+                targetVehicle = FindAnyObjectByType<VehicleController>();
                 if (targetVehicle == null) return;
             }
 
