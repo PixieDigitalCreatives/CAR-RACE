@@ -157,3 +157,19 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
 - [x] All textures configured for mobile GPU memory constraints (< 1.5 MB VRAM per map).
 - [x] 157 `.meta` files verified with **0 duplicate GUIDs**.
 
+
+
+---
+
+## 5. Web Frontend Assets & Libraries
+
+| Asset / Library | Origin / Provider | License | Purpose in GAMEIUM |
+|---|---|---|---|
+| **React 19 & React-DOM** | Meta Open Source | MIT | Core component framework for public web app |
+| **Vite 8** | VoidZero | MIT | Fast ESM development server and Rollup production bundler |
+| **Lucide React** | Lucide Contributors | ISC | High-craft technical and telemetry SVG icon suite |
+| **Canvas-Confetti** | Kiril Vatev | MIT | Post-race victory celebration particle rendering |
+| **Orbitron & Syne Fonts** | Matt McInerney / Lucas Le Bihan | SIL Open Font License 1.1 | Display headings & neon brand typography |
+| **JetBrains Mono** | JetBrains | SIL Open Font License 1.1 | Speedometer, tachometer, lap timers & API schemas |
+| **Plus Jakarta Sans** | Tokotype | SIL Open Font License 1.1 | Clean UI body copy and dossier specifications |
+| **Web Audio Synthesizer** | In-House (`audioSynth.ts`) | MIT / Project Proprietary | Real-time procedural engine revs, screech, and chimes |

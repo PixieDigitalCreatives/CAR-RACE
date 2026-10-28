@@ -124,6 +124,71 @@ namespace ThegameioRacing.EditorTools
             }
         }
     }
-}
 
-// Touch for recompile
+        [MenuItem("Tools/GAMEIUM/Configure WebGL Project Settings", false, 13)]
+        public static void ConfigureWebGLSettings()
+        {
+            Debug.Log("[GAMEIUM] Configuring Project Settings for Web Browser (WebGL)...");
+
+            PlayerSettings.companyName = "GAMEIUM";
+            PlayerSettings.productName = "GAMEIUM";
+
+            // WebGL Memory & Performance Tuning
+            PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
+            PlayerSettings.WebGL.decompressionFallback = false;
+            PlayerSettings.WebGL.memorySize = 256;
+            PlayerSettings.WebGL.linkerTarget = WebGLLinkerTarget.Wasm;
+
+            // Color space: Linear for authentic URP nighttime street illumination
+            PlayerSettings.colorSpace = ColorSpace.Linear;
+
+            Debug.Log("[GAMEIUM] WebGL Project Settings successfully configured.");
+        }
+
+        [MenuItem("Tools/GAMEIUM/Build WebGL (Browser Game)", false, 14)]
+        public static void BuildWebGL()
+        {
+            ConfigureWebGLSettings();
+
+            string outputDir = "Builds/WebGL";
+            if (!Directory.Exists(outputDir)) Directory.CreateDirectory(outputDir);
+
+            string[] scenes = new string[]
+            {
+                "Assets/_Project/Scenes/MainMenu.unity",
+                "Assets/_Project/Scenes/DowntownCircuit.unity",
+                "Assets/_Project/Scenes/SampleStreet_GateA.unity",
+                "Assets/_Project/Scenes/VehiclePhysicsTest.unity"
+            };
+
+            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
+            {
+                scenes = scenes,
+                locationPathName = outputDir,
+                target = BuildTarget.WebGL,
+                options = BuildOptions.None
+            };
+
+            Debug.Log($"[GAMEIUM] Initiating WebGL browser build to: {outputDir}...");
+
+            try
+            {
+                BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
+                BuildSummary summary = report.summary;
+
+                if (summary.result == BuildResult.Succeeded)
+                {
+                    Debug.Log($"[GAMEIUM] WebGL build SUCCEEDED: {summary.totalSize} bytes at {outputDir}");
+                }
+                else if (summary.result == BuildResult.Failed)
+                {
+                    Debug.LogError($"[GAMEIUM] WebGL build FAILED with {summary.totalErrors} errors.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[GAMEIUM] WebGL build execution exception: {ex.Message}");
+            }
+        }
+
+}
