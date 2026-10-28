@@ -106,12 +106,12 @@ namespace ThegameioRacing.Vehicle
             CreateWheel(carRoot, "Wheel_RR", new Vector3(trackHalfWidth, wheelY, rearZ), wheelRadius, wheelWidth, matTire, matRim,
                 out WheelCollider rrC, out Transform rrV);
 
-            controller.SetupComponents(flC, frC, rlC, rrC, flV, frV, rlV, rrV);
-
             // Skid trails
             TrailRenderer[] trails = new TrailRenderer[2];
             trails[0] = CreateSkidTrail("SkidTrail_RL", rlV);
             trails[1] = CreateSkidTrail("SkidTrail_RR", rrV);
+
+            controller.SetupComponents(flC, frC, rlC, rrC, flV, frV, rlV, rrV, trails);
 
             return carRoot;
         }

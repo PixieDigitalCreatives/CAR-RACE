@@ -18,6 +18,7 @@ namespace ThegameioRacing.Core
     {
         [Header("Vehicle Configuration")]
         [SerializeField] private VehicleConfig activeConfig;
+        [SerializeField] private VehicleDatabase vehicleDatabase;
         [SerializeField] private bool generateTrackIfMissing = true;
 
         [Header("Runtime Spawn References")]
@@ -30,9 +31,20 @@ namespace ThegameioRacing.Core
         {
             EnsureEventSystem();
 
+            if (activeConfig == null && vehicleDatabase != null)
+            {
+                activeConfig = vehicleDatabase.GetDefaultVehicle();
+            }
+
             if (activeConfig == null)
             {
-                activeConfig = Resources.Load<VehicleConfig>("Vehicles/VehicleConfig_Regular");
+#if UNITY_EDITOR
+                activeConfig = UnityEditor.AssetDatabase.LoadAssetAtPath<VehicleConfig>("Assets/_Project/ScriptableObjects/Vehicles/VehicleConfig_Regular.asset");
+                if (vehicleDatabase == null)
+                {
+                    vehicleDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<VehicleDatabase>("Assets/_Project/ScriptableObjects/Vehicles/VehicleDatabase.asset");
+                }
+#endif
                 if (activeConfig == null)
                 {
                     // Runtime fallback config

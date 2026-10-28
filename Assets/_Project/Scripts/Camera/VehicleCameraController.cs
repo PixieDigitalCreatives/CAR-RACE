@@ -129,11 +129,22 @@ namespace ThegameioRacing.Camera
             // Collision check against track geometry / buildings
             Vector3 targetCenter = target.position + Vector3.up * (height * 0.5f);
             Vector3 rayDir = (desiredPosition - targetCenter).normalized;
-            float desiredDist = Vector3.Distance(targetCenter, desiredPosition);
-
-            if (Physics.SphereCast(targetCenter, cameraCollisionRadius, rayDir, out RaycastHit hit, desiredDist, collisionLayers, QueryTriggerInteraction.Ignore))
+            RaycastHit[] hits = Physics.SphereCastAll(targetCenter, cameraCollisionRadius, rayDir, desiredDist, collisionLayers, QueryTriggerInteraction.Ignore);
+            float closestDist = desiredDist;
+            for (int i = 0; i < hits.Length; i++)
             {
-                desiredPosition = targetCenter + rayDir * Mathf.Max(1.5f, hit.distance - cameraCollisionRadius);
+                if (hits[i].collider != null && hits[i].transform.root != target.root)
+                {
+                    if (hits[i].distance < closestDist)
+                    {
+                        closestDist = hits[i].distance;
+                    }
+                }
+            }
+
+            if (closestDist < desiredDist)
+            {
+                desiredPosition = targetCenter + rayDir * Mathf.Max(1.5f, closestDist - cameraCollisionRadius);
             }
 
             // Smooth position

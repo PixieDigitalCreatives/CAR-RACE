@@ -321,6 +321,8 @@ namespace ThegameioRacing.Vehicle
 
         private void UpdateTelemetryAndAudio()
         {
+            if (config == null) return;
+
             // Simulated RPM and gear calculations
             float speedRatio = Mathf.Clamp01(CurrentSpeedKmh / Mathf.Max(config.topSpeedKmh, 10f));
             int gears = Mathf.Max(config.gearCount, 4);
@@ -383,7 +385,8 @@ namespace ThegameioRacing.Vehicle
 
         public void SetupComponents(
             WheelCollider flC, WheelCollider frC, WheelCollider rlC, WheelCollider rrC,
-            Transform flV, Transform frV, Transform rlV, Transform rrV)
+            Transform flV, Transform frV, Transform rlV, Transform rrV,
+            TrailRenderer[] trails = null)
         {
             frontLeftCollider = flC;
             frontRightCollider = frC;
@@ -394,6 +397,13 @@ namespace ThegameioRacing.Vehicle
             frontRightVisual = frV;
             rearLeftVisual = rlV;
             rearRightVisual = rrV;
+
+            if (trails != null)
+            {
+                tireSkidTrails = trails;
+            }
+
+            ApplyConfig();
         }
     }
 }

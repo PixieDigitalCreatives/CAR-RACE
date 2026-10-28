@@ -41,7 +41,11 @@ namespace ThegameioRacing.UI
 
         private void Update()
         {
-            if (targetVehicle == null) return;
+            if (targetVehicle == null)
+            {
+                targetVehicle = FindFirstObjectByType<VehicleController>();
+                if (targetVehicle == null) return;
+            }
 
             float speed = targetVehicle.CurrentSpeedKmh;
             if (speedText != null)

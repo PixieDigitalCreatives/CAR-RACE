@@ -244,7 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891e5e6c02aa4410ba7c1c1c0383bfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ThegameioRacing.Core:VehicleTestBootstrap
-  activeConfig: {fileID: 0}
+  activeConfig: {fileID: 11400000, guid: eec28c7c12e94e699664376895cd20f3, type: 2}
+  vehicleDatabase: {fileID: 11400000, guid: 3ff1816164fc472d9df71c24a8dc386d, type: 2}
   generateTrackIfMissing: 1
 --- !u!4 &1288349104
 Transform:

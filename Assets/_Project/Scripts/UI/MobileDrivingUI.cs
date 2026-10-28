@@ -25,7 +25,11 @@ namespace ThegameioRacing.UI
 
         private void Update()
         {
-            if (inputReader == null) return;
+            if (inputReader == null)
+            {
+                inputReader = FindFirstObjectByType<VehicleInputReader>();
+                if (inputReader == null) return;
+            }
 
             float steer = 0f;
             if (leftPressed) steer -= 1f;
