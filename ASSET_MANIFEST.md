@@ -89,24 +89,63 @@ This document records all third-party external assets integrated into **THEGAMEI
 
 ---
 
-## 2. In-House / Procedural Assets (Original Game Implementations)
+## 2. Reference-Derived Visual Textures (PowerPoint Controlling Reference)
 
-All gameplay scripts, procedural car generator, vehicle physics, race managers, camera controllers, track builders, and custom shaders/materials are original work developed specifically for THEGAMEIO RACING.
+The following environment textures are derived directly from the supplied visual design reference (`thegameio_Racing_Game.ppt`, Slide 3 `img_03.jpg` and Slide 7 `img_05.jpg`):
 
-- **Vehicle Physics & Controller:** `VehicleController.cs`, `VehicleConfig.cs`, `IVehicleInput.cs`
-- **Procedural Car Mesh Generator:** `CarModelBuilder.cs` (Original 3D chassis, cabin, splitters, diffusers, spoilers, wheels, and LED light clusters)
-- **Camera Controller:** `VehicleCameraController.cs`
-- **UI & HUD System:** `HUDController.cs`, `MobileDrivingUI.cs`
-- **Track & Environment Builders:** `TestTrackSceneBuilder.cs`, `GateASampleSceneBuilder.cs`
-- **Branding Assets:** Original *thegameio* brand billboards, start arches, chevron trackside barriers, and speed boards based on the reference presentation.
+### Asset 6: African Cultural Wall Mural (`tex_mural_african_culture.png`)
+- **Visual Source:** Slide 3 (`img_03.jpg`) and Slide 7 (`img_05.jpg`), African City / Market District environment concept.
+- **Subject:** Painted portrait of an African woman wearing an ochre/gold traditional gele headwrap, drop hoop earrings, and traditional patterned attire against an indigo-blue sky.
+- **File Location:** `Assets/_Project/Art/Textures/Environment/tex_mural_african_culture.png` (512x512 PNG)
+- **Usage:** Applied to `M_Mural_AfricanCulture.mat` on the flank wall of the multi-story commercial building at Z = 68m, illuminated by ground spotlights.
+- **Classification:** Project Reference Derivative (Direct crop & upscale from supplied slide artwork).
+
+### Asset 7: "OUR CITY OUR STRENGTH" Urban Billboard (`tex_billboard_our_city.png`)
+- **Visual Source:** Slide 3 (`img_03.jpg`), highway gantry billboard artwork.
+- **Subject:** African continent geometric silhouette in warm copper/orange with hatched elevation lines, bold white title "OUR CITY", gold sub-title "OUR STRENGTH", and circuit championship subtext.
+- **File Location:** `Assets/_Project/Art/Textures/Environment/tex_billboard_our_city.png` (1024x512 PNG)
+- **Usage:** Applied to `M_Billboard_CityStrength.mat` on the illuminated steel billboard truss structure at Z = 14m.
+- **Classification:** Project Reference Derivative (Vector-accurate graphic recreation of supplied slide billboard).
+
+### Asset 8: Vertical Neon "AFRICA" Blade Sign (`tex_sign_neon_africa.png`)
+- **Visual Source:** Slide 3 (`img_03.jpg`), vertical illuminated neon blade sign adjacent to the cultural mural.
+- **Subject:** Vertical typography "A-F-R-I-C-A" in radiant magenta/violet neon glow with hot white core.
+- **File Location:** `Assets/_Project/Art/Textures/Environment/tex_sign_neon_africa.png` (160x512 PNG)
+- **Usage:** Applied to building facade blade signs for authentic nighttime metropolis atmosphere.
+- **Classification:** Project Reference Derivative.
+
+### Asset 9: Track Safety Chevron Barrier (`tex_barrier_chevron.png`)
+- **Visual Source:** Slide 3 (`img_03.jpg`) and Slide 7 (`img_05.jpg`), trackside barrier run-off zones.
+- **Subject:** Heavy industrial yellow and black directional chevron arrows (`> > > >`).
+- **File Location:** `Assets/_Project/Art/Textures/Environment/tex_barrier_chevron.png` (512x128 PNG)
+- **Usage:** Applied to `M_Barrier_Chevron.mat` on steel crash barriers lining the 120m street section.
+- **Classification:** Project Reference Derivative.
 
 ---
 
-## 3. License Verification Checklist
+## 3. Procedural & In-House Generated Assets
+
+All gameplay code, physics models, procedural geometry builders, and contextual storefront signage are original in-house work developed specifically for THEGAMEIO RACING:
+
+- **Storefront Signage:**
+  - `tex_sign_storefront_01.png` ("KILIMA ELECTRONICS & MOBILE MONEY PAY") — Grounded local African retail technology/service store.
+  - `tex_sign_storefront_02.png` ("COASTAL BREEZE BISTRO & CAFE") — Grounded coastal bistro/cafe.
+  - `tex_awning_fabric.png` — Red and cream canvas striped fabric for market stalls and shop canopies.
+  - `tex_building_windows.png` — Emissive matrix of selectively lit warm gold/amber and unlit office/apartment windows.
+  - `tex_billboard_thegameio.png` — Official THEGAMEIO RACING tournament billboard per Slide 1 & 5.
+- **Vehicle Physics & Controller:** `VehicleController.cs`, `VehicleConfig.cs`, `IVehicleInput.cs`, `VehicleDatabase.cs`.
+- **Procedural 3D Vehicles:** `CarModelBuilder.cs` (Chassis, cabin, splitters, diffusers, spoilers, wheels, and LED light clusters).
+- **Camera & UI Systems:** `VehicleCameraController.cs`, `HUDController.cs`, `MobileDrivingUI.cs`.
+- **Track & Environment Builders:** `StreetPropsBuilder.cs`, `GateABootstrap.cs`, `GateASampleSceneBuilder.cs`.
+
+---
+
+## 4. License Verification Checklist
 
 - [x] All external texture assets are verified CC0 1.0 Universal (public domain).
 - [x] Zero paid assets or subscription dependencies introduced.
-- [x] Source URLs, author credits, and licenses documented.
-- [x] All normal maps configured with `textureType: 1` and sRGB disabled where appropriate.
-- [x] Asset sizes verified for mobile RAM/VRAM constraints (< 1.5 MB per 1k map).
-- [x] No duplicate GUIDs or broken `.meta` references.
+- [x] Source URLs, author credits, and licenses documented for all Poly Haven PBR textures.
+- [x] Graphic assets faithfully derived from controlling PowerPoint reference slides (`thegameio_Racing_Game.ppt`).
+- [x] All textures configured for mobile GPU memory constraints (< 1.5 MB VRAM per map).
+- [x] 140 `.meta` files verified with **0 duplicate GUIDs**.
+
