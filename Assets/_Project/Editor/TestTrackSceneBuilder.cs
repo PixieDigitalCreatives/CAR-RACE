@@ -519,7 +519,7 @@ namespace ThegameioRacing.EditorTools
             return mat;
         }
 
-        private static void AddSceneToBuildSettings(string scenePath)
+        public static void AddSceneToBuildSettings(string scenePath)
         {
             EditorBuildSettingsScene[] original = EditorBuildSettings.scenes;
             foreach (var s in original)

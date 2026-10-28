@@ -118,26 +118,49 @@ Because Unity is running interactively on the desktop (PID 13004), automated pla
 
 ---
 
-## 6. Files Changed in This Audit
+---
 
-1. [`Assets/_Project/Scripts/Vehicle/VehicleDatabase.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Vehicle/VehicleDatabase.cs) — *Created canonical vehicle database class.*
-2. [`Assets/_Project/ScriptableObjects/Vehicles/VehicleDatabase.asset`](file:///d:/Games/My%20project/Assets/_Project/ScriptableObjects/Vehicles/VehicleDatabase.asset) — *Created database asset referencing all 5 canonical configs.*
-3. [`Assets/_Project/Scripts/Core/VehicleTestBootstrap.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Core/VehicleTestBootstrap.cs) — *Updated to reference canonical VehicleDatabase and VehicleConfig without Resources.*
-4. [`Assets/_Project/Scripts/Vehicle/VehicleController.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Vehicle/VehicleController.cs) — *Added ApplyConfig() and trails wiring to SetupComponents; added config null guard.*
-5. [`Assets/_Project/Scripts/Vehicle/CarModelBuilder.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Vehicle/CarModelBuilder.cs) — *Passed skid trails into controller.SetupComponents.*
-6. [`Assets/_Project/Scripts/Camera/VehicleCameraController.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Camera/VehicleCameraController.cs) — *Updated spherecast to ignore vehicle chassis.*
-7. [`Assets/_Project/Scripts/UI/HUDController.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/UI/HUDController.cs) — *Added dynamic targetVehicle acquisition in Update.*
-8. [`Assets/_Project/Scripts/UI/MobileDrivingUI.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/UI/MobileDrivingUI.cs) — *Added dynamic inputReader acquisition in Update.*
-9. [`Assets/_Project/Scenes/VehiclePhysicsTest.unity`](file:///d:/Games/My%20project/Assets/_Project/Scenes/VehiclePhysicsTest.unity) — *Bound activeConfig and vehicleDatabase serialized references.*
-10. `Assets/_Project/Resources/` — *Deleted duplicate folder to resolve 5 duplicate GUID collisions.*
-11. [`DEVELOPMENT_STATUS.md`](file:///d:/Games/My%20project/DEVELOPMENT_STATUS.md) — *Updated with full audit results.*
+## 5. Visual Quality Gate A — Representative Nighttime Street Sample
+
+### Slide Alignment & Visual Specification
+- **Reference Slides:** Slide 3 (African City / Environment Design, `img_03.jpg`) and Slide 7 (District 01 Downtown Circuit, `img_05.jpg` Market District details).
+- **Aesthetic Elements Matched:**
+  1. **Restrained Nighttime Palette:** Dark indigo midnight sky ambient (`#0c1524`), cool slate horizon (`#0f1729`), and faint silvery directional moonlight (intensity 0.16, 58° elevation).
+  2. **Asphalt & Roadway:** Authentic dark aggregate tarmac with subtle damp night sheen (Poly Haven CC0 `asphalt_02` PBR), 14m wide 4-lane avenue, crisp white dashed lane dividers, double continuous yellow center lines, and 10-car starting grid stalls (2 columns x 5 rows).
+  3. **Curbs & Sidewalks:** 0.18m raised concrete curbs and 3.8m wide pedestrian walkways using Poly Haven CC0 `concrete_pavement_03` PBR.
+  4. **African City Storefronts:** Ground-floor commercial units matching local retail:
+     - Storefront 1: "KILIMA ELECTRONICS & MOBILE PAY" with warm interior gold light (range 10m, intensity 16 cd), glass display windows, striped canvas awning, and backlit illuminated sign.
+     - Storefront 2: "COASTAL BREEZE BISTRO & CAFE" with warm cafe glow, fabric awning, and illuminated sign.
+  5. **Commercial & Residential Buildings:**
+     - 4-story commercial building (18m x 22m) with Poly Haven CC0 `concrete_tile_facade` PBR and illuminated/dark window matrix (`tex_building_windows.png`).
+     - Large-scale African cultural mural on flank wall illuminated by spotlights (`tex_mural_african_culture.png`).
+     - 5-story commercial tower with balconies and metal railings.
+  6. **Streetlights:** Curved steel masts with cobra-head fixtures spaced at 25m intervals casting downward warm sodium light cones (`#ffb870`, 3000K, range 22m, spot angle 72°, intensity 28 cd) onto the asphalt.
+  7. **Safety Barriers & Spectators:** Metal Armco crash barriers with yellow/black chevron warning stripes (`tex_barrier_chevron.png`) separating the track from sidewalks. Contemporary African spectators stationed safely behind barriers.
+  8. **Urban Billboards:** Illuminated "OUR CITY OUR STRENGTH" and "THEGAMEIO RACING" billboards.
+  9. **Vehicle Integration:** Player car spawned in Grid Slot 01 with `VehicleController`, LED headlights, taillights, camera chase system, and mobile touch HUD.
+
+### Free Assets Integrated & Licenses
+All external textures verified CC0 1.0 Universal (Public Domain) and documented in `ASSET_MANIFEST.md`:
+1. `asphalt_02` (Diffuse 1k, Normal 1k, Roughness 1k) — Rob Tuytel (Poly Haven)
+2. `concrete_pavement_03` (Diffuse 1k, Normal 1k, Roughness 1k) — Charlotte Baglioni (Poly Haven)
+3. `concrete_tile_facade` (Diffuse 1k, Normal 1k, Roughness 1k) — Charlotte Baglioni (Poly Haven)
+4. `painted_plaster_wall` (Diffuse 1k, Normal 1k, Roughness 1k) — Amal Kumar (Poly Haven)
+5. `metal_plate` (Diffuse 1k, Normal 1k, Roughness 1k) — Rob Tuytel (Poly Haven)
+
+### Reusable Architecture & Scene Delivery
+- **Script Builder:** [`Assets/_Project/Scripts/Environment/StreetPropsBuilder.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Environment/StreetPropsBuilder.cs) — Modular procedural mesh and prop builder.
+- **Runtime Bootstrapper:** [`Assets/_Project/Scripts/Environment/GateABootstrap.cs`](file:///d:/Games/My%20project/Assets/_Project/Scripts/Environment/GateABootstrap.cs) — Deterministic scene generator.
+- **Editor Scene Builder:** [`Assets/_Project/Editor/GateASampleSceneBuilder.cs`](file:///d:/Games/My%20project/Assets/_Project/Editor/GateASampleSceneBuilder.cs) — Menu item `Tools > THEGAMEIO > Build Gate A Street Sample Scene`.
+- **Delivered Scene:** [`Assets/_Project/Scenes/SampleStreet_GateA.unity`](file:///d:/Games/My%20project/Assets/_Project/Scenes/SampleStreet_GateA.unity) (registered in `EditorBuildSettings.asset`).
+- **Asset Manifest:** [`ASSET_MANIFEST.md`](file:///d:/Games/My%20project/ASSET_MANIFEST.md) at project root.
+- **GUID Audit:** 139 `.meta` files scanned; **0 duplicate GUIDs**.
 
 ---
 
-## 7. Recommended Next Milestone
+## 6. Recommended Next Milestone
 
-Now that asset integrity is verified (0 duplicate GUIDs), the build pipeline is aligned, and the vehicle test scene is fully fortified against runtime exceptions, the recommended next milestone is:
+**Phase 4: Gate B & C — Full Downtown Circuit Closed Loop (Route 1)**
+- Expand the representative street into a full continuous drivable circuit with connected corners, commercial junctions, and elevation relief as mapped in the concept loop.
+- Implement ordered checkpoints (`Checkpoint.cs`, `CheckpointManager.cs`) and race state machine (`RaceManager.cs`).
 
-**Phase 5: First Complete Urban Circuit Race (Route 1 — Downtown Circuit)**
-- Build the closed-loop urban racing circuit matching the PPT Downtown Circuit concept (wide avenues, illuminated storefronts, technical corners, and 10-car starting grid).
-- Implement ordered checkpoint trigger gates, start/finish line detection, lap timer, and race state machine (`Waiting`, `Countdown`, `Racing`, `Paused`, `Finished`, `DNF`).
