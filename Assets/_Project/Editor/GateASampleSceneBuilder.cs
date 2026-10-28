@@ -1,5 +1,7 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
@@ -120,6 +122,10 @@ namespace ThegameioRacing.EditorTools
             // Glass Material
             Material matGlass = CreateSimpleMat(litShader, "M_Store_Glass", new Color(0.12f, 0.18f, 0.25f, 0.85f), 0.92f, 0.1f);
 
+            // Vertical Neon Sign (Vibrant Neon Glow)
+            Material matSignNeonAfrica = CreateEmissiveTexMat(litShader, "M_Sign_Neon_Africa",
+                $"{TEX_ENV_DIR}/tex_sign_neon_africa.png", new Color(2.2f, 0.8f, 2.5f));
+
             // =========================================================================
             // 2. ROOT GAME OBJECTS
             // =========================================================================
@@ -136,23 +142,23 @@ namespace ThegameioRacing.EditorTools
             StreetPropsBuilder.CreateRoadMarkings(
                 sceneRoot.transform, matMarkingWhite, matMarkingYellow, length: 120f, roadWidth: 14f);
 
-            // Streetlights (Pairs spaced at 25m intervals)
+            // Streetlights (Overhanging the driving lanes)
             float[] lightPositionsZ = new float[] { 10f, 35f, 60f, 85f, 110f };
             float streetHalf = 7f;
             foreach (float lz in lightPositionsZ)
             {
-                // Left Streetlight (facing roadway)
+                // Left Streetlight (facing roadway towards +X)
                 StreetPropsBuilder.CreateStreetlight(
                     sceneRoot.transform,
                     new Vector3(-(streetHalf + 0.35f), 0.18f, lz),
-                    Quaternion.Euler(0f, 90f, 0f),
+                    Quaternion.identity,
                     matMetal, matStreetlightBulb);
 
-                // Right Streetlight (facing roadway)
+                // Right Streetlight (facing roadway towards -X)
                 StreetPropsBuilder.CreateStreetlight(
                     sceneRoot.transform,
                     new Vector3(streetHalf + 0.35f, 0.18f, lz),
-                    Quaternion.Euler(0f, -90f, 0f),
+                    Quaternion.Euler(0f, 180f, 0f),
                     matMetal, matStreetlightBulb);
             }
 
@@ -185,14 +191,14 @@ namespace ThegameioRacing.EditorTools
             // =========================================================================
             // 3. BUILDINGS & STOREFRONTS (MATCHING THE POWERPOINT)
             // =========================================================================
-            float buildingLineLeft = -(streetHalf + 4.0f);
-            float buildingLineRight = (streetHalf + 4.0f);
+            float buildingLineLeft = -(streetHalf + 3.8f);
+            float buildingLineRight = (streetHalf + 3.8f);
 
             // Storefront 1: Kilima Electronics & Mobile Pay (Left, Z = 24m)
             StreetPropsBuilder.CreateStorefront(
                 sceneRoot.transform,
                 new Vector3(buildingLineLeft, 0.18f, 24f),
-                Quaternion.Euler(0f, 90f, 0f),
+                Quaternion.Euler(0f, -90f, 0f),
                 matPlaster, matSignKilima, matAwning, matGlass, matMetal,
                 "Kilima_Electronics");
 
@@ -200,7 +206,7 @@ namespace ThegameioRacing.EditorTools
             StreetPropsBuilder.CreateStorefront(
                 sceneRoot.transform,
                 new Vector3(buildingLineLeft, 0.18f, 40f),
-                Quaternion.Euler(0f, 90f, 0f),
+                Quaternion.Euler(0f, -90f, 0f),
                 matPlaster, matSignCafe, matAwning, matGlass, matMetal,
                 "Coastal_Breeze_Cafe");
 
@@ -208,15 +214,23 @@ namespace ThegameioRacing.EditorTools
             StreetPropsBuilder.CreateCommercialBuilding(
                 sceneRoot.transform,
                 new Vector3(buildingLineLeft - 2f, 0.18f, 68f),
-                Quaternion.Euler(0f, 90f, 0f),
+                Quaternion.Euler(0f, -90f, 0f),
                 matCommercialFacade, matWindows, matMural, matMetal,
                 hasMural: true, width: 20f, height: 26f, depth: 16f);
+
+            // Vertical Neon Blade Sign ("AFRICA") beside the mural at Z = 58m
+            StreetPropsBuilder.CreateVerticalBladeSign(
+                sceneRoot.transform,
+                new Vector3(buildingLineLeft + 0.5f, 2.8f, 58f),
+                Quaternion.identity,
+                matMetal, matSignNeonAfrica,
+                width: 1.4f, height: 7.5f, depth: 0.25f);
 
             // Right-Side Commercial Building (Right, Z = 32m)
             StreetPropsBuilder.CreateCommercialBuilding(
                 sceneRoot.transform,
                 new Vector3(buildingLineRight + 2f, 0.18f, 32f),
-                Quaternion.Euler(0f, -90f, 0f),
+                Quaternion.Euler(0f, 90f, 0f),
                 matCommercialFacade, matWindows, null, matMetal,
                 hasMural: false, width: 22f, height: 32f, depth: 18f);
 
@@ -224,18 +238,18 @@ namespace ThegameioRacing.EditorTools
             StreetPropsBuilder.CreateCommercialBuilding(
                 sceneRoot.transform,
                 new Vector3(buildingLineRight + 1f, 0.18f, 66f),
-                Quaternion.Euler(0f, -90f, 0f),
+                Quaternion.Euler(0f, 90f, 0f),
                 matPlaster, matWindows, null, matMetal,
                 hasMural: false, width: 18f, height: 20f, depth: 14f);
 
             // =========================================================================
-            // 4. URBAN BILLBOARDS
+            // 4. URBAN BILLBOARDS (ORIENTED TOWARDS ONCOMING TRAFFIC)
             // =========================================================================
             // "OUR CITY OUR STRENGTH" Billboard (Right, Z = 14m)
             StreetPropsBuilder.CreateUrbanBillboard(
                 sceneRoot.transform,
                 new Vector3(buildingLineRight + 1.5f, 0.18f, 14f),
-                Quaternion.Euler(0f, -75f, 0f),
+                Quaternion.Euler(0f, 15f, 0f),
                 matMetal, matBillboardCity,
                 boardWidth: 9.5f, boardHeight: 4.8f, postHeight: 6f);
 
@@ -243,7 +257,7 @@ namespace ThegameioRacing.EditorTools
             StreetPropsBuilder.CreateUrbanBillboard(
                 sceneRoot.transform,
                 new Vector3(buildingLineLeft - 1.5f, 0.18f, 92f),
-                Quaternion.Euler(0f, 105f, 0f),
+                Quaternion.Euler(0f, -15f, 0f),
                 matMetal, matBillboardThegameio,
                 boardWidth: 9.5f, boardHeight: 4.8f, postHeight: 6f);
 
@@ -321,8 +335,8 @@ namespace ThegameioRacing.EditorTools
             canvasObj.AddComponent<GraphicRaycaster>();
 
             GameObject eventSystem = new GameObject("EventSystem");
-            eventSystem.AddComponent<UnityEngine.EventSystems.EventSystem>();
-            eventSystem.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            eventSystem.AddComponent<EventSystem>();
+            eventSystem.AddComponent<StandaloneInputModule>();
 
             HUDController hud = canvasObj.AddComponent<HUDController>();
             MobileDrivingUI mobileUI = canvasObj.AddComponent<MobileDrivingUI>();

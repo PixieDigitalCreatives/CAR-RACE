@@ -268,6 +268,7 @@ MonoBehaviour:
   matBillboardThegameio: {fileID: 2100000, guid: 325584130fe9452b841722ecfbde234f, type: 2}
   matStreetlightBulb: {fileID: 2100000, guid: 5b0b8d2dda1147968f63aadd7c127f29, type: 2}
   matGlass: {fileID: 2100000, guid: 053b10362b9a427698e32efcb82b135a, type: 2}
+  matSignNeonAfrica: {fileID: 2100000, guid: 1f264936e1964ed0bd92551e41ffdf72, type: 2}
 --- !u!4 &1599384003
 Transform:
   m_ObjectHideFlags: 0

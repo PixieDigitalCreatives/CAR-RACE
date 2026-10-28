@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 
 namespace ThegameioRacing.EditorTools

@@ -41,6 +41,11 @@ namespace ThegameioRacing.UI
             inputReader.SetMobileHandbrake(handbrakePressed);
         }
 
+        public void BindInputReader(VehicleInputReader reader)
+        {
+            inputReader = reader;
+        }
+
         public void OnLeftDown() => leftPressed = true;
         public void OnLeftUp() => leftPressed = false;
 

@@ -111,7 +111,7 @@ The following environment textures are derived directly from the supplied visual
 - **Visual Source:** Slide 3 (`img_03.jpg`), vertical illuminated neon blade sign adjacent to the cultural mural.
 - **Subject:** Vertical typography "A-F-R-I-C-A" in radiant magenta/violet neon glow with hot white core.
 - **File Location:** `Assets/_Project/Art/Textures/Environment/tex_sign_neon_africa.png` (160x512 PNG)
-- **Usage:** Applied to building facade blade signs for authentic nighttime metropolis atmosphere.
+- **Usage:** Applied to `M_Sign_Neon_Africa.mat` on vertical illuminated blade sign attached to avenue commercial facade at Z = 58m.
 - **Classification:** Project Reference Derivative.
 
 ### Asset 9: Track Safety Chevron Barrier (`tex_barrier_chevron.png`)
@@ -147,5 +147,5 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
 - [x] Source URLs, author credits, and licenses documented for all Poly Haven PBR textures.
 - [x] Graphic assets faithfully derived from controlling PowerPoint reference slides (`thegameio_Racing_Game.ppt`).
 - [x] All textures configured for mobile GPU memory constraints (< 1.5 MB VRAM per map).
-- [x] 140 `.meta` files verified with **0 duplicate GUIDs**.
+- [x] 141 `.meta` files verified with **0 duplicate GUIDs**.
 

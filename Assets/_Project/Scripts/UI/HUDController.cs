@@ -39,6 +39,11 @@ namespace ThegameioRacing.UI
             targetVehicle = vehicle;
         }
 
+        public void BindVehicle(VehicleController vehicle)
+        {
+            SetTargetVehicle(vehicle);
+        }
+
         private void Update()
         {
             if (targetVehicle == null)

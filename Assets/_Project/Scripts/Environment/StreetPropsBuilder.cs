@@ -682,5 +682,79 @@ namespace ThegameioRacing.Environment
 
             return crowdRoot;
         }
+
+        // =================================================================================
+        // 9. VERTICAL ILLUMINATED NEON BLADE SIGN ("AFRICA")
+        // =================================================================================
+
+        public static GameObject CreateVerticalBladeSign(
+            Transform parent,
+            Vector3 position,
+            Quaternion rotation,
+            Material matSteel,
+            Material matNeon,
+            float width = 1.4f,
+            float height = 7.5f,
+            float depth = 0.25f)
+        {
+            GameObject signRoot = new GameObject("Vertical_Neon_Sign_Africa");
+            signRoot.transform.SetParent(parent, false);
+            signRoot.transform.position = position;
+            signRoot.transform.rotation = rotation;
+
+            // Cantilever Wall Mount Brackets
+            float[] bracketHeights = new float[] { height * 0.2f, height * 0.8f };
+            foreach (float by in bracketHeights)
+            {
+                GameObject bracket = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                bracket.name = $"Mount_Bracket_{by:F0}";
+                bracket.transform.SetParent(signRoot.transform, false);
+                bracket.transform.localPosition = new Vector3(-width * 0.5f - 0.45f, by, 0f);
+                bracket.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+                bracket.transform.localScale = new Vector3(0.08f, 0.45f, 0.08f);
+                if (matSteel != null) bracket.GetComponent<Renderer>().sharedMaterial = matSteel;
+            }
+
+            // Blade Housing Box
+            GameObject bladeBox = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            bladeBox.name = "Blade_Housing";
+            bladeBox.transform.SetParent(signRoot.transform, false);
+            bladeBox.transform.localPosition = new Vector3(0f, height * 0.5f, 0f);
+            bladeBox.transform.localScale = new Vector3(width, height, depth);
+            if (matSteel != null) bladeBox.GetComponent<Renderer>().sharedMaterial = matSteel;
+
+            // Front Neon Quad (faces oncoming traffic / World -Z when oriented along street)
+            GameObject neonFront = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            neonFront.name = "Neon_Face_Front";
+            neonFront.transform.SetParent(bladeBox.transform, false);
+            neonFront.transform.localPosition = new Vector3(0f, 0f, -0.52f);
+            neonFront.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+            neonFront.transform.localScale = new Vector3(0.92f, 0.95f, 1f);
+            Object.DestroyImmediate(neonFront.GetComponent<Collider>());
+            if (matNeon != null) neonFront.GetComponent<Renderer>().sharedMaterial = matNeon;
+
+            // Back Neon Quad
+            GameObject neonBack = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            neonBack.name = "Neon_Face_Back";
+            neonBack.transform.SetParent(bladeBox.transform, false);
+            neonBack.transform.localPosition = new Vector3(0f, 0f, 0.52f);
+            neonBack.transform.localRotation = Quaternion.identity;
+            neonBack.transform.localScale = new Vector3(0.92f, 0.95f, 1f);
+            Object.DestroyImmediate(neonBack.GetComponent<Collider>());
+            if (matNeon != null) neonBack.GetComponent<Renderer>().sharedMaterial = matNeon;
+
+            // Vibrant Neon Glow Point Light
+            GameObject glowLight = new GameObject("Neon_Glow_Light");
+            glowLight.transform.SetParent(signRoot.transform, false);
+            glowLight.transform.localPosition = new Vector3(0f, height * 0.5f, 0f);
+
+            Light glow = glowLight.AddComponent<Light>();
+            glow.type = LightType.Point;
+            glow.color = new Color(0.95f, 0.25f, 0.85f); // Vivid magenta / neon violet
+            glow.intensity = 14f;
+            glow.range = 10f;
+
+            return signRoot;
+        }
     }
 }

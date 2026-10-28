@@ -46,6 +46,7 @@ namespace ThegameioRacing.Environment
         [SerializeField] private Material matBillboardThegameio;
         [SerializeField] private Material matStreetlightBulb;
         [SerializeField] private Material matGlass;
+        [SerializeField] private Material matSignNeonAfrica;
 
         private GameObject spawnedCar;
 
@@ -149,6 +150,8 @@ namespace ThegameioRacing.Environment
                 matStreetlightBulb = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/Materials/M_Streetlight_Bulb.mat");
             if (matGlass == null)
                 matGlass = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/Materials/M_Store_Glass.mat");
+            if (matSignNeonAfrica == null)
+                matSignNeonAfrica = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/Materials/M_Sign_Neon_Africa.mat");
 #endif
             Shader litShader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
 
@@ -171,6 +174,7 @@ namespace ThegameioRacing.Environment
             if (matBillboardThegameio == null) matBillboardThegameio = CreateFallbackEmissiveMat(litShader, new Color(0.12f, 0.15f, 0.22f), new Color(1.3f, 1.3f, 1.3f));
             if (matStreetlightBulb == null) matStreetlightBulb = CreateFallbackEmissiveMat(litShader, new Color(1f, 0.82f, 0.52f), new Color(4.5f, 3.2f, 1.5f));
             if (matGlass == null) matGlass = CreateFallbackMat(litShader, new Color(0.12f, 0.18f, 0.25f, 0.85f), 0.92f, 0.1f);
+            if (matSignNeonAfrica == null) matSignNeonAfrica = CreateFallbackEmissiveMat(litShader, new Color(0.9f, 0.2f, 0.8f), new Color(2.5f, 0.6f, 2.2f));
         }
 
         private Material CreateFallbackMat(Shader shader, Color col, float smooth, float metal)
@@ -198,7 +202,10 @@ namespace ThegameioRacing.Environment
             RenderSettings.ambientEquatorColor = new Color(0.06f, 0.09f, 0.16f); // Cool slate
             RenderSettings.ambientGroundColor = new Color(0.02f, 0.03f, 0.05f);  // Dark asphalt bounce
 
-            if (transform.Find("Directional_Moonlight") == null)
+            // Check scene root and child to avoid duplicate directional moonlight
+            if (GameObject.Find("Directional Moonlight") == null &&
+                GameObject.Find("Directional_Moonlight") == null &&
+                transform.Find("Directional_Moonlight") == null)
             {
                 GameObject moonObj = new GameObject("Directional_Moonlight");
                 moonObj.transform.SetParent(transform, false);
@@ -226,21 +233,23 @@ namespace ThegameioRacing.Environment
             StreetPropsBuilder.CreateRoadMarkings(
                 streetRoot.transform, matMarkingWhite, matMarkingYellow, avenueLength, roadWidth);
 
-            // 3. Streetlights
+            // 3. Streetlights (Overhanging the driving lanes)
             float streetHalf = roadWidth * 0.5f;
             float[] lightPositionsZ = new float[] { 10f, 35f, 60f, 85f, 110f };
             foreach (float lz in lightPositionsZ)
             {
+                // Left Streetlight: overhangs towards World +X over left lane
                 StreetPropsBuilder.CreateStreetlight(
                     streetRoot.transform,
                     new Vector3(-(streetHalf + 0.35f), 0.18f, lz),
-                    Quaternion.Euler(0f, 90f, 0f),
+                    Quaternion.identity,
                     matMetal, matStreetlightBulb);
 
+                // Right Streetlight: overhangs towards World -X over right lane
                 StreetPropsBuilder.CreateStreetlight(
                     streetRoot.transform,
                     new Vector3(streetHalf + 0.35f, 0.18f, lz),
-                    Quaternion.Euler(0f, -90f, 0f),
+                    Quaternion.Euler(0f, 180f, 0f),
                     matMetal, matStreetlightBulb);
             }
 
@@ -265,39 +274,48 @@ namespace ThegameioRacing.Environment
             StreetPropsBuilder.CreateSpectatorCluster(streetRoot.transform, new Vector3((streetHalf + 2.1f), 0.18f, 72f), Quaternion.Euler(0f, -90f, 0f), 6);
 
             // 6. Buildings & Storefronts
-            float bldLineLeft = -(streetHalf + 4.0f);
-            float bldLineRight = (streetHalf + 4.0f);
+            float bldLineLeft = -(streetHalf + 3.8f);
+            float bldLineRight = (streetHalf + 3.8f);
 
+            // Left Side: Facing road (World +X), back extending away (World -X)
             StreetPropsBuilder.CreateStorefront(
-                streetRoot.transform, new Vector3(bldLineLeft, 0.18f, 24f), Quaternion.Euler(0f, 90f, 0f),
+                streetRoot.transform, new Vector3(bldLineLeft, 0.18f, 24f), Quaternion.Euler(0f, -90f, 0f),
                 matPlaster, matSignKilima, matAwning, matGlass, matMetal, "Kilima_Electronics");
 
             StreetPropsBuilder.CreateStorefront(
-                streetRoot.transform, new Vector3(bldLineLeft, 0.18f, 40f), Quaternion.Euler(0f, 90f, 0f),
+                streetRoot.transform, new Vector3(bldLineLeft, 0.18f, 40f), Quaternion.Euler(0f, -90f, 0f),
                 matPlaster, matSignCafe, matAwning, matGlass, matMetal, "Coastal_Breeze_Cafe");
 
             StreetPropsBuilder.CreateCommercialBuilding(
-                streetRoot.transform, new Vector3(bldLineLeft - 2f, 0.18f, 68f), Quaternion.Euler(0f, 90f, 0f),
+                streetRoot.transform, new Vector3(bldLineLeft - 2f, 0.18f, 68f), Quaternion.Euler(0f, -90f, 0f),
                 matCommercialFacade, matWindows, matMural, matMetal,
                 hasMural: true, width: 20f, height: 26f, depth: 16f);
 
+            // Vertical Neon Blade Sign ("AFRICA") attached to avenue building corner at Z = 58m
+            StreetPropsBuilder.CreateVerticalBladeSign(
+                streetRoot.transform, new Vector3(bldLineLeft + 0.5f, 2.8f, 58f), Quaternion.identity,
+                matMetal, matSignNeonAfrica, width: 1.4f, height: 7.5f, depth: 0.25f);
+
+            // Right Side: Facing road (World -X), back extending away (World +X)
             StreetPropsBuilder.CreateCommercialBuilding(
-                streetRoot.transform, new Vector3(bldLineRight + 2f, 0.18f, 32f), Quaternion.Euler(0f, -90f, 0f),
+                streetRoot.transform, new Vector3(bldLineRight + 2f, 0.18f, 32f), Quaternion.Euler(0f, 90f, 0f),
                 matCommercialFacade, matWindows, null, matMetal,
                 hasMural: false, width: 22f, height: 32f, depth: 18f);
 
             StreetPropsBuilder.CreateCommercialBuilding(
-                streetRoot.transform, new Vector3(bldLineRight + 1f, 0.18f, 66f), Quaternion.Euler(0f, -90f, 0f),
+                streetRoot.transform, new Vector3(bldLineRight + 1f, 0.18f, 66f), Quaternion.Euler(0f, 90f, 0f),
                 matPlaster, matWindows, null, matMetal,
                 hasMural: false, width: 18f, height: 20f, depth: 14f);
 
-            // 7. Urban Billboards
+            // 7. Urban Billboards (Oriented towards oncoming traffic)
+            // Right Billboard ("OUR CITY OUR STRENGTH" at Z = 14m)
             StreetPropsBuilder.CreateUrbanBillboard(
-                streetRoot.transform, new Vector3(bldLineRight + 1.5f, 0.18f, 14f), Quaternion.Euler(0f, -75f, 0f),
+                streetRoot.transform, new Vector3(bldLineRight + 1.5f, 0.18f, 14f), Quaternion.Euler(0f, 15f, 0f),
                 matMetal, matBillboardCity, 9.5f, 4.8f, 6f);
 
+            // Left Billboard ("THEGAMEIO RACING" at Z = 92m)
             StreetPropsBuilder.CreateUrbanBillboard(
-                streetRoot.transform, new Vector3(bldLineLeft - 1.5f, 0.18f, 92f), Quaternion.Euler(0f, 105f, 0f),
+                streetRoot.transform, new Vector3(bldLineLeft - 1.5f, 0.18f, 92f), Quaternion.Euler(0f, -15f, 0f),
                 matMetal, matBillboardThegameio, 9.5f, 4.8f, 6f);
         }
 
