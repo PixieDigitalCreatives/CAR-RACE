@@ -20,6 +20,7 @@ namespace ThegameioRacing.Input
 
         [Header("Smoothing")]
         [SerializeField] private float keyboardSteerSmoothing = 10f;
+        [SerializeField] private bool inputEnabled = true;
         private float targetSteer;
 
         // Interface implementation
@@ -94,6 +95,16 @@ namespace ThegameioRacing.Input
                 mobileReset = false;
             }
 
+            if (!inputEnabled)
+            {
+                steerInput = 0f;
+                throttleInput = 0f;
+                brakeInput = 1f; // Apply brakes when locked at grid
+                handbrakeInput = true;
+                resetTriggered = false;
+                return;
+            }
+
             targetSteer = Mathf.Clamp(rawSteer, -1f, 1f);
             steerInput = Mathf.MoveTowards(steerInput, targetSteer, Time.deltaTime * keyboardSteerSmoothing);
             throttleInput = Mathf.Clamp01(rawThrottle);
@@ -101,6 +112,8 @@ namespace ThegameioRacing.Input
             handbrakeInput = rawHandbrake;
             resetTriggered = rawReset;
         }
+
+        public void SetInputEnabled(bool enabled) => inputEnabled = enabled;
 
         #region Mobile UI Injection
         public void SetMobileSteer(float value) => mobileSteer = Mathf.Clamp(value, -1f, 1f);

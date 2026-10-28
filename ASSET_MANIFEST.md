@@ -134,9 +134,13 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
   - `tex_building_windows.png` — Emissive matrix of selectively lit warm gold/amber and unlit office/apartment windows.
   - `tex_billboard_thegameio.png` — Official THEGAMEIO RACING tournament billboard per Slide 1 & 5.
 - **Vehicle Physics & Controller:** `VehicleController.cs`, `VehicleConfig.cs`, `IVehicleInput.cs`, `VehicleDatabase.cs`.
-- **Procedural 3D Vehicles:** `CarModelBuilder.cs` (Chassis, cabin, splitters, diffusers, spoilers, wheels, and LED light clusters).
-- **Camera & UI Systems:** `VehicleCameraController.cs`, `HUDController.cs`, `MobileDrivingUI.cs`.
-- **Track & Environment Builders:** `StreetPropsBuilder.cs`, `GateABootstrap.cs`, `GateASampleSceneBuilder.cs`.
+- **Procedural 3D Vehicles & Silhouettes:** `CarModelBuilder.cs` (5 distinct silhouettes: Hypercar, Muscle, Tuner, Rally, Balanced + real-time headlights and taillights).
+- **Procedural Audio Synthesizer:** `ProceduralAudio.cs` (100% license-free mathematical audio generation: combustion engine RPM loop, 440/880Hz countdown beeps, D-major arpeggio checkpoint chime, and tire skid noise).
+- **Race Progression & Timing:** `RaceManager.cs`, `CheckpointManager.cs`, `Checkpoint.cs`.
+- **AI Racing Opponents:** `AIRacingController.cs`, `WaypointNode.cs`.
+- **Camera & UI Systems:** `VehicleCameraController.cs`, `HUDController.cs`, `MobileDrivingUI.cs`, `RaceCountdownUI.cs`, `PauseMenuUI.cs`, `RaceResultsUI.cs`.
+- **Frontend & Showroom:** `MainMenuManager.cs`, `MainMenu.unity`.
+- **Track & Environment Builders:** `StreetPropsBuilder.cs`, `GateABootstrap.cs`, `DowntownCircuitBootstrap.cs`, `DowntownCircuit.unity`.
 
 ---
 
@@ -147,5 +151,5 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
 - [x] Source URLs, author credits, and licenses documented for all Poly Haven PBR textures.
 - [x] Graphic assets faithfully derived from controlling PowerPoint reference slides (`thegameio_Racing_Game.ppt`).
 - [x] All textures configured for mobile GPU memory constraints (< 1.5 MB VRAM per map).
-- [x] 141 `.meta` files verified with **0 duplicate GUIDs**.
+- [x] 154 `.meta` files verified with **0 duplicate GUIDs**.
 

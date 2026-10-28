@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/VehiclePhysicsTest.unity
-    guid: 5a930e55eb814c4c927f18c74a43e17a
+    path: Assets/_Project/Scenes/MainMenu.unity
+    guid: 9ef6eea1d05b462397097d77daaac584
+  - enabled: 1
+    path: Assets/_Project/Scenes/DowntownCircuit.unity
+    guid: 858bf400728e4f638ff6806b56630760
   - enabled: 1
     path: Assets/_Project/Scenes/SampleStreet_GateA.unity
     guid: 5954f884e7694127a5e7e36fc9012b37
+  - enabled: 1
+    path: Assets/_Project/Scenes/VehiclePhysicsTest.unity
+    guid: 5a930e55eb814c4c927f18c74a43e17a
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05

@@ -45,6 +45,11 @@ namespace ThegameioRacing.Vehicle
 
         public VehicleConfig Config => config;
 
+        public void SetEngineAudio(AudioSource source)
+        {
+            engineAudioSource = source;
+        }
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
