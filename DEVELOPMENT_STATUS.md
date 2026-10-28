@@ -11,10 +11,10 @@
 
 | Verification Target | Evidence & Concrete Output | Status |
 |---|---|:---:|
-| **Metadata & GUID Hygiene** | Scanned 154 `.meta` files across all project directories. | **0 Duplicate GUIDs (100% Clean)** |
-| **C# Script Compilation** | Compiled with Unity bundled .NET 8.0 SDK (`VerifyCompilation.csproj`). | **0 Errors, 24 Warnings (100% Clean)** |
+| **Metadata & GUID Hygiene** | Scanned 157 `.meta` files across all project directories. | **0 Duplicate GUIDs (100% Clean)** |
+| **C# Script Compilation** | Compiled with Unity bundled .NET 8.0 SDK (`VerifyCompilation.csproj`). | **0 Errors, 20 Warnings (100% Clean)** |
 | **Scenes in Build Settings** | `MainMenu.unity` (0), `DowntownCircuit.unity` (1), `SampleStreet_GateA.unity` (2), `VehiclePhysicsTest.unity` (3). | **Configured & Validated** |
-| **Overall Project Completion** | Comprehensive system audit scored in `PROJECT_PROGRESS.md`. | **82.9% Weighted Completion** |
+| **Overall Project Completion** | Comprehensive system audit scored in `PROJECT_PROGRESS.md`. | **83.7% Code-Implemented / 49.4% Runtime-Verified** |
 
 ---
 

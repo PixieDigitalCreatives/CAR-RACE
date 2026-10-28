@@ -35,6 +35,14 @@ namespace ThegameioRacing.EditorTools
             PlayerSettings.colorSpace = ColorSpace.Linear;
             PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.Android, false);
 
+            // Configure App Icon
+            Texture2D appIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Art/Textures/UI/tex_gameium_app_icon.png");
+            if (appIcon != null)
+            {
+                PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Unknown, new Texture2D[] { appIcon });
+                PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new Texture2D[] { appIcon });
+            }
+
             Debug.Log("[GAMEIUM] Android Player Settings successfully configured.");
         }
 

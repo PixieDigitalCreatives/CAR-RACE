@@ -125,14 +125,18 @@ The following environment textures are derived directly from the supplied visual
 
 ## 3. Procedural & In-House Generated Assets
 
-All gameplay code, physics models, procedural geometry builders, and contextual storefront signage are original in-house work developed specifically for THEGAMEIO RACING:
+All gameplay code, physics models, procedural geometry builders, and contextual storefront signage are original in-house work developed specifically for GAMEIUM:
+
+- **UI & Brand Assets:**
+  - `tex_gameium_logo.png` (1024x512 transparent PNG) — Standalone UI title brand crest with electric cyan and warm gold gradient styling.
+  - `tex_gameium_app_icon.png` (512x512 PNG) — Android launcher squircle app icon with stylized speed crest and GAMEIUM typography.
 
 - **Storefront Signage:**
   - `tex_sign_storefront_01.png` ("KILIMA ELECTRONICS & MOBILE MONEY PAY") — Grounded local African retail technology/service store.
   - `tex_sign_storefront_02.png` ("COASTAL BREEZE BISTRO & CAFE") — Grounded coastal bistro/cafe.
   - `tex_awning_fabric.png` — Red and cream canvas striped fabric for market stalls and shop canopies.
   - `tex_building_windows.png` — Emissive matrix of selectively lit warm gold/amber and unlit office/apartment windows.
-  - `tex_billboard_thegameio.png` — Official GAMEIUM official tournament billboard per Slide 1 & 5.
+  - `tex_billboard_thegameio.png` — Official GAMEIUM tournament billboard per Slide 1 & 5.
 - **Vehicle Physics & Controller:** `VehicleController.cs`, `VehicleConfig.cs`, `IVehicleInput.cs`, `VehicleDatabase.cs`.
 - **Procedural 3D Vehicles & Silhouettes:** `CarModelBuilder.cs` (5 distinct silhouettes: Hypercar, Muscle, Tuner, Rally, Balanced + real-time headlights and taillights).
 - **Procedural Audio Synthesizer:** `ProceduralAudio.cs` (100% license-free mathematical audio generation: combustion engine RPM loop, 440/880Hz countdown beeps, D-major arpeggio checkpoint chime, and tire skid noise).
@@ -151,5 +155,5 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
 - [x] Source URLs, author credits, and licenses documented for all Poly Haven PBR textures.
 - [x] Graphic assets faithfully derived from controlling PowerPoint reference slides (`thegameio_Racing_Game.ppt`).
 - [x] All textures configured for mobile GPU memory constraints (< 1.5 MB VRAM per map).
-- [x] 154 `.meta` files verified with **0 duplicate GUIDs**.
+- [x] 157 `.meta` files verified with **0 duplicate GUIDs**.
 
