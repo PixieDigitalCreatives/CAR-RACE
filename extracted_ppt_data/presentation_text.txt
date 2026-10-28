@@ -1,0 +1,936 @@
+___PPTMac11
+---
+Multiplayer Racing Game
+---
+Game requirements & build proposal: cars, routes, pools, laps, leaderboard sync, branding and wallet top-ups
+---
+Pick a car, pick a route
+---
+Garage screen with at least 5 original cars, each with its own speed, acceleration and handling
+---
+Admin creates pools of up to 10 racers
+---
+Pool 1, Pool 2, Pool 3 and so on are created and priced from the web admin panel
+---
+Fastest time over all laps wins
+---
+Lap and winner logic is validated on the server, then results flow to a leaderboard synced with thegameio
+---
+thegameio branding everywhere, easy top-ups
+---
+Branded from first load to victory screen, with wallet recharge by payment gateway or airtime
+---
+African City: five connected race districts
+---
+A fictional African coastal metropolis at night, with each district built as its own route
+---
+Click to edit Template title style
+---
+Click to edit Template text stylesSecond levelThird levelFourth levelFifth level
+---
+thegameio Racing
+---
+Multiplayer Racing Game  |  Oct 2026
+---
+thegameio Racing - CONTENT
+---
+thegameio Racing - TITLE_DARK
+---
+image-1-1.jpeg
+---
+Hero reference image
+---
+Stat cars to select
+---
+Stat label cars to select
+---
+cars to select
+---
+Stat race routes
+---
+Stat label race routes
+---
+race routes
+---
+Stat racers per pool
+---
+Stat label racers per pool
+---
+racers per pool
+---
+Reference visual only
+---
+Opening: thegameio's browser-based multiplayer racing game. Key numbers: at least 5 selectable cars, 4 routes (approved as they look good), pools of up to 10 racers. Details and costing come from thegameio_Racing_Game_Quotation_01.xlsx.
+---
+Car card Regular
+---
+Car Regular circle
+---
+image-2-1.png
+---
+Car Regular icon
+---
+Balanced everyday car, easy to drive
+---
+Car card Fast & Furious style
+---
+Car Fast & Furious style circle
+---
+image-2-2.png
+---
+Car Fast & Furious style icon
+---
+Fast & Furious style
+---
+Tuner / drift racer with nitro feel
+---
+Car card Speedo
+---
+Car Speedo circle
+---
+image-2-3.png
+---
+Car Speedo icon
+---
+Hypercar with the top speed
+---
+Car card Classic Muscle
+---
+Car Classic Muscle circle
+---
+image-2-4.png
+---
+Car Classic Muscle icon
+---
+Classic Muscle
+---
+Raw power, heavy and loud
+---
+Car card Street Rally
+---
+Car Street Rally circle
+---
+image-2-5.png
+---
+Car Street Rally icon
+---
+Street Rally
+---
+Grip and control on any corner
+---
+image-2-6.jpeg
+---
+Route reference image
+---
+Reference look for routes
+---
+Routes circle
+---
+image-2-7.png
+---
+Routes icon
+---
+4 routes confirmed, as per the current look
+---
+Each route has its own layout, corners, scenery, checkpoints, start grid and minimap, not a repeat of one track.
+---
+Slide Number Placeholder 0
+---
+Car options requested: Regular, Fast & Furious style, Speedo and more. The quotation includes 5: Regular, Tuner/Drift (Fast & Furious style), Speedo hypercar, Classic Muscle, Street Rally. Car designs and names are original; 'Fast & Furious' is a style description only, no film branding. Stat bars are indicative. The 4 routes are approved as they look good.
+---
+AFRICAN CITY / ENVIRONMENT DESIGN
+---
+A grounded, achievable game look
+---
+CONCEPT PRESENTATION
+---
+Visuals are illustrative, not final gameplay captures
+---
+Restrained nighttime lighting
+---
+Streetlights, selected lit windows and shop signs keep the road readable.
+---
+Mixed city scale
+---
+Small shops and houses sit beside apartments and taller office buildings.
+---
+Practical visual detail
+---
+Dry roads, simple materials and reusable building assets. Final quality follows an approved sample.
+---
+Race staging for 10 cars
+---
+10-car field
+---
+A proposed two-column, five-row starting grid with clear spacing and a visible start line.
+---
+Room for racing
+---
+Wider opening straight, overtaking zones and readable corner approaches.
+---
+Spectators & safety
+---
+African spectators stand on sidewalks behind barriers, outside the racing surface.
+---
+Environment planning and visual placement only. Car behaviour is outside this scope.
+---
+Concept loop map
+---
+CONCEPT LAYOUT
+---
+START / FINISH
+---
+Downtown avenue
+---
+Marketcorner
+---
+Residential street
+---
+Civic square
+---
+Clockwise circuit
+---
+One connected urban loop
+---
+Five visual sectors: downtown, market, residential, commercial junction and civic square.
+---
+Layout review
+---
+Confirm corner radii, road widths, grid spacing and barrier positions during greybox review.
+---
+Design status
+---
+Route shape is schematic. Distance, lap count and final dimensions remain to be agreed.
+---
+Downtown avenue & commercial junction
+---
+Road character
+---
+Broad straights flow into junction turns, with clear road markings and direction boards.
+---
+Building frontage
+---
+Office blocks, apartments and smaller retail units create a varied street edge.
+---
+Night treatment
+---
+Consistent streetlight spacing, modest sign illumination and a readable skyline.
+---
+Level sectors 01
+---
+02: proposed fast section and controlled corner sequence
+---
+Market streets & local city life
+---
+Market identity
+---
+Small shops, awnings, shutters and local storefront colour give the sector its character.
+---
+Corner visibility
+---
+Keep stalls and props away from racing lines. Use barriers to define turns.
+---
+African city population
+---
+African spectators in contemporary everyday clothing populate safe sidewalk zones.
+---
+Level sector 03: tighter street rhythm with clear sightlines at each turn
+---
+Residential streets & civic square
+---
+Small and large buildings
+---
+Low-rise houses, mid-rise apartments and occasional tall buildings line the route.
+---
+Street detail
+---
+Sidewalks, gates, balconies, boundary walls, street trees and parked props outside the track.
+---
+Open square section
+---
+A wider urban section creates visual relief and a clear return towards the main straight.
+---
+Level sectors 04
+---
+05: neighbourhood detail and an open city landmark
+---
+Detailed environment & level scope
+---
+01  Route & greybox
+---
+Circuit planning, 10-car grid spacing, road widths, turns, junctions and sightline review.
+---
+02  Road & surface work
+---
+Road mesh, kerbs, sidewalks, lane markings, medians, drains and pavement transitions.
+---
+03  Buildings & city assets
+---
+Modular small and large buildings, shopfronts, roof forms, windows, doors and skyline masses.
+---
+04  Race dressing
+---
+Start / finish art, direction boards, barriers, spectator zones, street furniture and vegetation.
+---
+05  Materials & lighting
+---
+Road and building materials, restrained night lighting, selected lit windows and visual consistency.
+---
+06  Final level package
+---
+Scene organisation, reusable assets, visual cleanup, agreed refinements and handover notes.
+---
+4-month production schedule
+---
+MONTH 01   /   Planning & sample
+---
+Approve the visual target. Prepare the loop map, road greybox, 10-car grid and a sample street.Review: route and quality direction.
+---
+MONTH 02   /   City construction
+---
+Build road sections, mixed-height building modules, junctions and district boundaries.Review: complete route and main structures.
+---
+MONTH 03   /   Detail & night lighting
+---
+Dress all urban sectors with materials, shops, barriers, African spectators and street lighting.Review: full environment presentation.
+---
+MONTH 04   /   Refinement & handover
+---
+Resolve agreed visual feedback, clean up assets, organise scenes and prepare the level package.Review: final environment delivery.
+---
+Admin panel card
+---
+Admin circle
+---
+image-3-1.png
+---
+Admin: Create pool
+---
+Set by admin
+---
+Route 1 to 4
+---
+Date and time
+---
+Max players
+---
+Pool 1 card
+---
+7 / 10 joined
+---
+Entry fee set by admin
+---
+Pool 2 card
+---
+10 / 10 joined
+---
+Pool 3 card
+---
+Flow Admin creates pool
+---
+Admin creates pool
+---
+image-3-2.png
+---
+Flow User pays entry fee
+---
+User pays entry fee
+---
+Flow Joins (max 10)
+---
+Joins (max 10)
+---
+Flow Race starts
+---
+Race starts
+---
+Flow Results & prizes
+---
+Results & prizes
+---
+Admin creates Pool1, Pool2, Pool3 etc. from the web admin panel and sets the entry fee, laps, route and start time. Each pool takes a maximum of 10 players. Pool status: open, full, racing, finished. The user pays the admin-defined price to join.
+---
+Laps set by admin circle
+---
+image-4-1.png
+---
+Laps set by admin icon
+---
+Laps set by admin
+---
+Every racer completes the same number of laps
+---
+Checkpoint validation circle
+---
+Checkpoint validation icon
+---
+Checkpoint validation
+---
+No shortcuts or wrong-way driving; missed checkpoint = lap not counted
+---
+Minimum total time wins circle
+---
+image-4-3.png
+---
+Minimum total time wins icon
+---
+Minimum total time wins
+---
+Lap timer per lap; winner has the lowest total race time
+---
+Tie-break circle
+---
+image-4-4.png
+---
+Tie-break icon
+---
+Best single lap first, then earliest finish; unfinished = DNF
+---
+Anti-cheat circle
+---
+image-4-5.png
+---
+Anti-cheat icon
+---
+Race times re-checked server-side before results are final
+---
+Leaderboard card
+---
+Leaderboard circle
+---
+image-4-6.png
+---
+Leaderboard icon
+---
+Leaderboard
+---
+image-4-7.png
+---
+Synced with thegameio
+---
+RaceKing_21
+---
+All pool players listed
+---
+Gold, Silver and Bronze trophies on top
+---
+Views: pool-wise, daily, weekly, all-time
+---
+Winner logic: admin sets laps; checkpoints validate each lap; total race time decides the winner (minimum time). Tie-break: best lap, then earliest finish. DNF for incomplete races. Times re-validated server-side. Leaderboard shows all users, with top 3 ordered by winner trophy. Leaderboard and user tables sync with thegameio via secure API or shared database, with single login (SSO). Player names shown are sample data.
+---
+image-5-1.jpeg
+---
+HUD reference image
+---
+Reference HUD: rebuilt in thegameio style
+---
+Brand Splash & loader
+---
+Splash & loader
+---
+Brand Menu & garage skin
+---
+Menu & garage skin
+---
+Brand In-race HUD logo
+---
+In-race HUD logo
+---
+Brand Track billboards
+---
+Track billboards
+---
+Brand Car number plates
+---
+Car number plates
+---
+Brand Victory screen
+---
+Victory screen
+---
+Wallet card
+---
+Wallet circle
+---
+image-5-2.png
+---
+Wallet icon
+---
+Recharge & add funds
+---
+Payment gateway circle
+---
+image-5-3.png
+---
+Payment gateway icon
+---
+Payment gateway
+---
+Cards, UPI, net banking, wallets
+---
+Airtime circle
+---
+image-5-4.png
+---
+Airtime icon
+---
+Pay from mobile balance (carrier billing)
+---
+Entry fee on join
+---
+Prize credit
+---
+Note: the current quotation excludes the payment, wallet and airtime system. The game sends a "payment confirmed" hook; gateway and airtime integration need a separate quote.
+---
+Branding touchpoints from the scope sheet: splash screen, loader, menu skin, HUD logo, in-world billboards, number plates, victory screen. Client supplies logo, colours and fonts. Recharge: requirement is to add funds via payment gateway or airtime. Per the quotation, payment/add funds/wallet is NOT included; it's handled by the client's payment provider and our backend receives a 'payment confirmed' call when a player joins a pool. Decide whether to add this to scope.
+---
+image-6-1.jpeg
+---
+District Downtown Circuit
+---
+01  Downtown CircuitNeon streets, wide junctions, technical corners
+---
+image-6-2.jpeg
+---
+District Waterfront Run
+---
+02  Waterfront RunCoastal boulevard, sweeping bends
+---
+image-6-3.jpeg
+---
+District Market District
+---
+03  Market DistrictShopfronts and narrow turns
+---
+image-6-4.jpeg
+---
+District Industrial Port
+---
+04  Industrial PortContainer yards, broad drift zones
+---
+image-6-5.jpeg
+---
+District Hillside Express
+---
+05  Hillside ExpressElevated roads, hairpins
+---
+Track planning circle
+---
+image-6-6.png
+---
+Track planning icon
+---
+Track planning
+---
+5 route layouts, corner flow, overtaking sections
+---
+City environment circle
+---
+image-6-7.png
+---
+City environment icon
+---
+City environment
+---
+District buildings, storefronts, skyline, bridges
+---
+Race presentation circle
+---
+Race presentation icon
+---
+Race presentation
+---
+Start/finish, grid, checkpoint markers
+---
+Road construction circle
+---
+image-6-9.png
+---
+Road construction icon
+---
+Road construction
+---
+Asphalt, junctions, kerbs, markings, medians
+---
+Trackside dressing circle
+---
+image-6-10.png
+---
+Trackside dressing icon
+---
+Trackside dressing
+---
+Barriers, direction boards, streetlights, props
+---
+Visual finishing circle
+---
+image-6-11.png
+---
+Visual finishing icon
+---
+Visual finishing
+---
+Lighting, reflections, cleanup and handover
+---
+African City concept: five connected districts in a fictional African coastal metropolis. 01 Downtown Circuit, 02 Waterfront Run, 03 Market District, 04 Industrial Port, 05 Hillside Express. Scope covers track planning, city environment, race presentation, road construction, trackside dressing and visual finishing. Concept visuals illustrate the proposed art direction.
+---
+tation, road construction, trackside dressing and visual finishing. Concept visuals illustrate the proposed art direction.
+---
+PowerPoint Document
+---
+SummaryInformation
+---
+DocumentSummaryInformation
+---
+Current User
+---
+%&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+---
+&'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz
+---
+jzD:4WV?gIn`t?
+---
+l,?}*?=2*:P
+---
+JDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+---
+|DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+---
+2KIb?+d}+9Ses
+---
+_/f}EKm3vuRji`
+---
+ndgv99bh]?2
+---
+:LWqXkykyi4o
+---
+/vvggO=pwvv
+---
+EQ-IZE6LAQi^cD
+---
+@e2T*C&Sx"I%
+---
+|xpiztuvtevpqc
+---
+TR%1	C4,}od]ljy0
+---
+xQD'Rh1I,'#
+---
+]roEtgYpGQx
+---
+'Z\$]Z,]Z$^^"^
+---
+\brRbjrR||bj\t
+---
+1gZBLtFjrRB|R
+---
+>:!666&>>zz
+---
+#:!>)>>9!>5)i
+---
+B\ttBLLbtLb\tB\t\T$
+---
+R2pH842:622
+---
+Dx"<9>,,lZxh
+---
+LT\HHTll\|0
+---
+-wKshKshS"0
+---
+! 82#+3-==itHM
+---
+#xr8qj8~b vr8q
+---
+cSdcKdSK$g!
+---
+l ~r(vb z| rdU
+---
+;>U:9]>3S;7
+---
+:;|6?r:;rcq
+---
+xyKUi}yImiIu
+---
+(ortztX8=Rp
+---
+3:<3<43<4=84588300=4
+---
+">O8:::33+]E"
+---
+LS{<Zs4\{4H?
+---
+<\J=^J>^L>\L
+---
+RJB
+iH)i$Q
+---
+f+ys,ss<wc<w},se$}
+---
+nTWWoggOG{ogGog'
+---
+1926<4:1:1>:>1:69:N
+---
+JaP(t
+ud`pt
+---
+K-qBP]hW
+mJ
+---
+KNF!7lV/G=o
+---
+tc}CkSsGk[og
+---
+CjZgOggwGGg{[{[+VkK
+---
+~kg[K{k3VKsg{K
+---
+`wOwOOWOowOOwoowo
+---
+5~s{|o}posxg}xk
+---
+b7m/b&
+IW
+9
+---
+GFe`F0^^=vjc/
+---
+5*v?WG,Obna
+---
+Wu,`(JYTBA	99
+---
+,fxqC U
+{`2
+---
+27yunp}qxiaxqq
+---
+uSx9*KAa~)I
+---
+n*wj<}f2{f,sk
+---
+5bX3
+79xF@W
+---
+z)rm6|m.re6t~"p,
+---
+TS].ygTWVVV0
+---
+6FsSesse]}EMm
+---
+a]_[]mCMuCMM}Mu
+---
+gV45W56V54T1
+---
+]MgCgk}{S}{KCKsc
+---
+qn2~m!yi:ye6ue!um9wy1{|,
+---
+t}2y}2yc*yk*yk:
+---
+hdbcRrX@E44
+---
+}u8|y0tk2rg1
+---
+{.sk.ws6ss6
+---
+,)EN._AgYeB
+---
+k		!)-$EjHa.
+---
+IDATz~1}w2uk<z
+---
+r;{u:wy*{y*{
+---
+<:U>3]>;Y:7]=;S=;[;;[?=S?3
+---
+q}*yc2ys&yc"vc"y
+---
+r/~u<q}2y}"
+---
+pw>{o!{{6}k&u
+---
+~Oqwd
+Z%4:G
+---
+hoCC{www{{Gog
+---
+`f|lzltzltv|l~r|
+---
+{,1@iH
+CVp$
+---
+@Og{[k[K{O{
+---
+-:]{SsSCCgs
+---
+zs
+
+p@v!*3a;T
+---
+Eodirt~txardfdhurl;
+---
+<7<00<80:<896
+---
+>&O],%^<C^.'
+---
+cz**#a.1MF'
+---
+Ph|hth`xhhtxhr|801
+---
+3*7#ss";FS^%F
+---
+./7./5.-U/-V.
+---
+*_3^:8Z82U9>S=6Y><Q::U;4^
+---
+?<V::Q:6Q>:^:>U9>Y
+---
+iqKxiKdYgluwt
+---
+sm7~c?zc/zz
+---
+)tU}vKOi]G!
+---
+}IeeupM)8VP
+---
+f%oNfs>6)x2
+---
+8ZY9\Z:T\?Z
+---
+o;)VU*!sIE(
+---
+8:>:696151116>2<266::2J
+---
+nxhxlhd|xtbd|bt|rl|rlbbljbljr|jj|jjbrr
+---
+:y~8}~<{~<{q2{~<}
+---
+%bO&VRk!6Gl
+---
+TRTHQ&E)-HiQ!e
+---
+rnxplhpthpdp
+---
+=]96S9:]96];2Y94Y
+---
+L[M%,7@XMPT
+---
+w~zuztv~vq~z~vtz
+---
+KA!Zecu'f
+---
+P(ZFkUEn("^.e
+---
+9DuS&OnooS)
+---
+@gWw[gWKGGskS]]9
+---
+VWtSobSObCOr}WbSw
+---
+R&Md`i|*ID
+---
+xIvvINNynn]IQUA^SN
+---
+xKmuS"6?f<1
+---
+!I@%s)%F)O-d
+---
+Lgxizl}iht?
+---
+#9Gz(=4;01Zh-
+---
+ns`ir|cnv~l|
+---
+\we~zyuakwj
+---
+0@,6kX5EJq"
+---
+Zosqcmzqka9
+---
+njZ799=>>uu\3
+---
+4404><:>4<|l`dppd`
+---
+R(**EF%KiT1
+---
+|7w~.{i>we)
+---
+<:22:<<:LbS
+---
+Rc,ah$"sk(
+---
+x|~6ywyi	`.2
+---
+Pv/SQI3bqG-
+---
+ZXZ\\Z\^^ZY^^Y
+---
+X\\Z\XZ^\^Y\Y^
+---
+hBentgcrgc|ok
+---
+CP(DGC%
+:Hq
+---
+eM^mr*`8~^/
+---
+(F'"T<L'Ct2DD
+---
+*3+mUfVeefy
+---
+,3S73M]okz[
+---
+%!+p"A@	 2n
+---
+P`|b|pzrhrjprr
+---
+<Cq*/k$UG]o
+---
+:54pjdh`|d b
+---
+BSIb*C5#D'INf
+---
+>7[:7W97W9??z~a
+---
+\Opw_hwoxO_d
+---
+`5pt0tl(|j$z
+---
+4[|d:un,zv4zj8z|@
+---
+2}n<|u!su>su.si&}
+---
+B=;;7=3;==;35=3
+---
+Hz;a[3H6BD#D6C
+---
+`kkwccwssok
+---
+BZ, [D?qSHu
+---
+]]	aqHo0RdZ
+---
+Da~#1d4c7M"
+---
+KssW0 V|	hE
+---
+o5m^=F;kM/T
+---
+<qYpOtcW21A
+---
+'.ZQN6Ku}[8+
+---
++{]WPi"I:0X
+---
+mLMrR"6yQax
+---
+0YTgQJW]6]>
+---
+URG8 .q_P|T
+---
+a5;KIfVo6@x
+---
+SU""""""""""""""""""""""""""""
+---
+^DDDDDDDDDDDDDDDDDDDDDDDDDDD
+---
