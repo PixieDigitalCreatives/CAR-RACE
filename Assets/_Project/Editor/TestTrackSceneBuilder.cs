@@ -17,10 +17,10 @@ namespace ThegameioRacing.EditorTools
         private const string SCENE_PATH = "Assets/_Project/Scenes/VehiclePhysicsTest.unity";
         private const string CONFIG_DIR = "Assets/_Project/ScriptableObjects/Vehicles";
 
-        [MenuItem("Tools/THEGAMEIO/Build Vehicle Physics Test Scene", false, 1)]
+        [MenuItem("Tools/GAMEIUM/Build Vehicle Physics Test Scene", false, 1)]
         public static void BuildTestScene()
         {
-            Debug.Log("[THEGAMEIO] Starting Test Track Scene generation...");
+            Debug.Log("[GAMEIUM] Starting Test Track Scene generation...");
 
             EnsureDirectories();
             CreateAllVehicleConfigs();
@@ -90,7 +90,7 @@ namespace ThegameioRacing.EditorTools
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            Debug.Log($"[THEGAMEIO] Test Scene successfully generated at: {SCENE_PATH}");
+            Debug.Log($"[GAMEIUM] Test Scene successfully generated at: {SCENE_PATH}");
         }
 
         private static void EnsureDirectories()
@@ -383,7 +383,7 @@ namespace ThegameioRacing.EditorTools
             Text gearTxt = CreateUIText("GearText", speedPanel.transform, "N", 24, FontStyle.Bold, new Color(0.35f, 0.85f, 1f), TextAnchor.MiddleCenter);
             gearTxt.rectTransform.anchoredPosition = new Vector2(0f, -32f);
 
-            Text titleTxt = CreateUIText("TitleText", canvasObj.transform, "THEGAMEIO RACING // VEHICLE TEST", 18, FontStyle.Bold, new Color(0.95f, 0.85f, 0.2f), TextAnchor.UpperLeft);
+            Text titleTxt = CreateUIText("TitleText", canvasObj.transform, "GAMEIUM // VEHICLE TEST", 18, FontStyle.Bold, new Color(0.95f, 0.85f, 0.2f), TextAnchor.UpperLeft);
             titleTxt.rectTransform.anchorMin = new Vector2(0.04f, 0.95f);
             titleTxt.rectTransform.anchorMax = new Vector2(0.04f, 0.95f);
             titleTxt.rectTransform.anchoredPosition = new Vector2(160f, -20f);

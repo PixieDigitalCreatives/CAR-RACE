@@ -1,6 +1,6 @@
-# THEGAMEIO RACING — 3RD-PARTY ASSET MANIFEST
+# GAMEIUM — 3RD-PARTY ASSET MANIFEST
 
-This document records all third-party external assets integrated into **THEGAMEIO RACING** in compliance with the project's free asset-first policy, licensing requirements, and mobile performance constraints.
+This document records all third-party external assets integrated into **GAMEIUM** in compliance with the project's free asset-first policy, licensing requirements, and mobile performance constraints.
 
 ---
 
@@ -132,7 +132,7 @@ All gameplay code, physics models, procedural geometry builders, and contextual 
   - `tex_sign_storefront_02.png` ("COASTAL BREEZE BISTRO & CAFE") — Grounded coastal bistro/cafe.
   - `tex_awning_fabric.png` — Red and cream canvas striped fabric for market stalls and shop canopies.
   - `tex_building_windows.png` — Emissive matrix of selectively lit warm gold/amber and unlit office/apartment windows.
-  - `tex_billboard_thegameio.png` — Official THEGAMEIO RACING tournament billboard per Slide 1 & 5.
+  - `tex_billboard_thegameio.png` — Official GAMEIUM official tournament billboard per Slide 1 & 5.
 - **Vehicle Physics & Controller:** `VehicleController.cs`, `VehicleConfig.cs`, `IVehicleInput.cs`, `VehicleDatabase.cs`.
 - **Procedural 3D Vehicles & Silhouettes:** `CarModelBuilder.cs` (5 distinct silhouettes: Hypercar, Muscle, Tuner, Rally, Balanced + real-time headlights and taillights).
 - **Procedural Audio Synthesizer:** `ProceduralAudio.cs` (100% license-free mathematical audio generation: combustion engine RPM loop, 440/880Hz countdown beeps, D-major arpeggio checkpoint chime, and tire skid noise).

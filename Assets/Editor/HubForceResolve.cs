@@ -6,7 +6,7 @@ using UnityEngine;
 [InitializeOnLoad]
 public static class HubForceResolve
 {
-    private const string k_StateKey = "THEGAMEIO.Setup.Initialized";
+    private const string k_StateKey = "GAMEIUM.Setup.Initialized";
 
     static HubForceResolve()
     {
@@ -24,18 +24,18 @@ public static class HubForceResolve
         if (SessionState.GetBool(k_StateKey, false)) return;
         SessionState.SetBool(k_StateKey, true);
 
-        Debug.Log("[THEGAMEIO] Auto-initializing project assets and test scene...");
+        Debug.Log("[GAMEIUM] Auto-initializing project assets and test scene...");
         AssetDatabase.Refresh();
 
         try
         {
             ThegameioRacing.EditorTools.TestTrackSceneBuilder.BuildTestScene();
             ThegameioRacing.EditorTools.GameBuildPipeline.ConfigureAndroidSettings();
-            Debug.Log("[THEGAMEIO] Test Scene & Android Configuration Completed Successfully!");
+            Debug.Log("[GAMEIUM] Test Scene & Android Configuration Completed Successfully!");
         }
         catch (System.Exception ex)
         {
-            Debug.LogWarning("[THEGAMEIO] Auto-setup delayed or waiting for compilation: " + ex.Message);
+            Debug.LogWarning("[GAMEIUM] Auto-setup delayed or waiting for compilation: " + ex.Message);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ThegameioRacing.UI
     }
 
     /// <summary>
-    /// Master Frontend Manager for THEGAMEIO RACING.
+    /// Master Frontend Manager for GAMEIUM.
     /// Manages the Title Screen, 3D Interactive Garage Showcase (turntable, 5 vehicle configs,
     /// dynamic stat bars, vehicle selection persistence), and Route Selection with track cards.
     /// Auto-generates its 3D environment, showroom lighting, and full UI hierarchy if run standalone.
@@ -266,8 +266,8 @@ namespace ThegameioRacing.UI
             rt.sizeDelta = Vector2.zero;
 
             // Brand Title & Subtitle
-            CreateText(panel.transform, "Title_Main", "THEGAMEIO RACING",
-                new Vector2(0.5f, 0.82f), new Vector2(900f, 90f), 68, FontStyle.Bold, new Color(1f, 0.85f, 0.15f), font);
+            CreateText(panel.transform, "Title_Main", "GAMEIUM",
+                new Vector2(0.5f, 0.82f), new Vector2(900f, 90f), 72, FontStyle.Bold, new Color(1f, 0.85f, 0.15f), font);
 
             CreateText(panel.transform, "Subtitle", "AFRICAN COASTAL METROPOLIS AT NIGHT",
                 new Vector2(0.5f, 0.74f), new Vector2(800f, 40f), 22, FontStyle.Normal, new Color(0.75f, 0.85f, 0.98f), font);
@@ -308,30 +308,39 @@ namespace ThegameioRacing.UI
             CreateText(panel.transform, "Title", "SELECT ROUTE",
                 new Vector2(0.5f, 0.88f), new Vector2(600f, 60f), 52, FontStyle.Bold, Color.white, font);
 
-            // 4 Track Cards (Horizontal Row)
+            // Track Cards (Horizontal Row)
             float[] cardX = new float[] { -540f, -180f, 180f, 540f };
-            string[] trackNames = new string[] { "Downtown Circuit", "Coastal Expressway", "Market District", "Industrial Port" };
-            string[] trackSpecs = new string[] { "1.6 km | 2 Laps\nMetropolis Night\nUnlocked", "2.2 km | 2 Laps\nHigh-Speed Sweeper\nUnlocked", "1.4 km | 2 Laps\nTechnical Chicane\nUnlocked", "1.8 km | 2 Laps\nHarbor Docks\nUnlocked" };
-            string[] sceneTargets = new string[] { "DowntownCircuit", "DowntownCircuit", "SampleStreet_GateA", "DowntownCircuit" };
+            string[] trackNames = new string[] { "Downtown Circuit", "Waterfront Run", "Market District", "Industrial Port" };
+            string[] trackSpecs = new string[] { 
+                "1.6 km | 2 Laps\nAfrican Coastal Metropolis\n[PLAYABLE NOW]", 
+                "2.2 km | 2 Laps\nHigh-Speed Ocean Sweep\n[IN DEVELOPMENT]", 
+                "1.4 km | Technical Chicanes\nBustling Market District\n[IN DEVELOPMENT]", 
+                "1.8 km | Shipping Docks\nHarbor Container Circuit\n[IN DEVELOPMENT]" 
+            };
+            string[] sceneTargets = new string[] { "DowntownCircuit", "", "", "" };
+            bool[] isPlayable = new bool[] { true, false, false, false };
 
             for (int i = 0; i < 4; i++)
             {
                 int idx = i;
-                BuildTrackCard(panel.transform, cardX[i], trackNames[i], trackSpecs[i], font, () =>
+                BuildTrackCard(panel.transform, cardX[i], trackNames[i], trackSpecs[i], isPlayable[i], font, () =>
                 {
-                    selectedRouteScene = sceneTargets[idx];
-                    SceneManager.LoadScene(selectedRouteScene);
+                    if (isPlayable[idx])
+                    {
+                        selectedRouteScene = sceneTargets[idx];
+                        SceneManager.LoadScene(selectedRouteScene);
+                    }
                 });
             }
 
             // Back Button (Bottom-Left)
-            CreateMenuButton(panel.transform, "Btn_Back", "← BACK", new Vector2(-650f, -440f), font,
+            CreateMenuButton(panel.transform, "Btn_Back", "< BACK", new Vector2(-650f, -440f), font,
                 new Color(0.25f, 0.30f, 0.38f), () => ShowScreen(MenuScreen.Title));
 
             return panel;
         }
 
-        private void BuildTrackCard(Transform parent, float posX, string title, string specs, Font font, UnityEngine.Events.UnityAction onClick)
+        private void BuildTrackCard(Transform parent, float posX, string title, string specs, bool playable, Font font, UnityEngine.Events.UnityAction onClick)
         {
             GameObject cardObj = new GameObject("TrackCard_" + title);
             cardObj.transform.SetParent(parent, false);
@@ -352,10 +361,10 @@ namespace ThegameioRacing.UI
             bRt.anchorMax = new Vector2(1f, 1f);
             bRt.sizeDelta = Vector2.zero;
             Image bImg = banner.AddComponent<Image>();
-            bImg.color = new Color(0.12f, 0.45f, 0.85f, 0.85f);
+            bImg.color = playable ? new Color(0.12f, 0.45f, 0.85f, 0.85f) : new Color(0.20f, 0.22f, 0.28f, 0.85f);
 
             CreateText(cardObj.transform, "Name", title, new Vector2(0.5f, 0.82f), new Vector2(300f, 50f), 24, FontStyle.Bold, Color.white, font);
-            CreateText(cardObj.transform, "Specs", specs, new Vector2(0.5f, 0.42f), new Vector2(280f, 160f), 19, FontStyle.Normal, new Color(0.8f, 0.9f, 1f), font);
+            CreateText(cardObj.transform, "Specs", specs, new Vector2(0.5f, 0.42f), new Vector2(280f, 160f), 19, FontStyle.Normal, playable ? new Color(0.8f, 0.9f, 1f) : new Color(0.6f, 0.65f, 0.72f), font);
 
             // Select & Launch Button
             GameObject btnObj = new GameObject("Btn_Race");
@@ -366,11 +375,20 @@ namespace ThegameioRacing.UI
             btnRt.sizeDelta = new Vector2(240f, 54f);
 
             Image btnImg = btnObj.AddComponent<Image>();
-            btnImg.color = new Color(0.12f, 0.65f, 0.35f);
+            btnImg.color = playable ? new Color(0.12f, 0.65f, 0.35f) : new Color(0.22f, 0.25f, 0.30f);
             Button btn = btnObj.AddComponent<Button>();
-            btn.onClick.AddListener(onClick);
+            if (playable)
+            {
+                btn.onClick.AddListener(onClick);
+            }
+            else
+            {
+                btn.interactable = false;
+            }
 
-            CreateText(btnObj.transform, "Label", "RACE THIS ROUTE", new Vector2(0.5f, 0.5f), new Vector2(240f, 50f), 18, FontStyle.Bold, Color.white, font);
+            string btnLabel = playable ? "RACE NOW" : "COMING SOON";
+            Color btnTextColor = playable ? Color.white : new Color(0.55f, 0.60f, 0.68f);
+            CreateText(btnObj.transform, "Label", btnLabel, new Vector2(0.5f, 0.5f), new Vector2(240f, 50f), 18, FontStyle.Bold, btnTextColor, font);
         }
 
         private GameObject BuildGaragePanel(Transform parent, Font font)
@@ -387,8 +405,8 @@ namespace ThegameioRacing.UI
                 new Vector2(0.5f, 0.92f), new Vector2(600f, 50f), 42, FontStyle.Bold, Color.white, font);
 
             // Left / Right Vehicle Switch Arrows
-            CreateArrowButton(panel.transform, "Btn_PrevCar", "◀", new Vector2(-460f, 0f), font, () => SwitchVehicle(-1));
-            CreateArrowButton(panel.transform, "Btn_NextCar", "▶", new Vector2(460f, 0f), font, () => SwitchVehicle(1));
+            CreateArrowButton(panel.transform, "Btn_PrevCar", "<", new Vector2(-460f, 0f), font, () => SwitchVehicle(-1));
+            CreateArrowButton(panel.transform, "Btn_NextCar", ">", new Vector2(460f, 0f), font, () => SwitchVehicle(1));
 
             // Right Info Card (Vehicle Specs & Stat Bars)
             GameObject cardObj = new GameObject("VehicleInfoCard");
@@ -652,3 +670,4 @@ namespace ThegameioRacing.UI
         #endregion
     }
 }
+

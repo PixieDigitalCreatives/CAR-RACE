@@ -18,7 +18,7 @@ namespace ThegameioRacing.Vehicle
         StreetRally
     }
 
-    [CreateAssetMenu(fileName = "VehicleConfig_", menuName = "THEGAMEIO Racing/Vehicle Config", order = 1)]
+    [CreateAssetMenu(fileName = "VehicleConfig_", menuName = "GAMEIUM/Vehicle Config", order = 1)]
     public class VehicleConfig : ScriptableObject
     {
         [Header("Identity")]

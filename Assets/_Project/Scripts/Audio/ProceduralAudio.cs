@@ -4,7 +4,7 @@ using ThegameioRacing.Vehicle;
 namespace ThegameioRacing.Audio
 {
     /// <summary>
-    /// 100% License-free procedural audio synthesizer for THEGAMEIO RACING.
+    /// 100% License-free procedural audio synthesizer for GAMEIUM.
     /// Synthesizes combustion engine rumble, countdown beeps, tire screeching,
     /// checkpoint chimes, and race finish fanfare without requiring external audio files.
     /// </summary>
@@ -168,3 +168,4 @@ namespace ThegameioRacing.Audio
         }
     }
 }
+

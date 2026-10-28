@@ -39,10 +39,10 @@ namespace ThegameioRacing.EditorTools
             }
         }
 
-        [MenuItem("Tools/THEGAMEIO/Build Gate A Street Sample Scene", false, 2)]
+        [MenuItem("Tools/GAMEIUM/Build Gate A Street Sample Scene", false, 2)]
         public static void BuildGateAScene()
         {
-            Debug.Log("[THEGAMEIO] Generating Gate A - Representative Nighttime Street Sample...");
+            Debug.Log("[GAMEIUM] Generating Gate A - Representative Nighttime Street Sample...");
 
             EnsureDirectories();
 
@@ -253,7 +253,7 @@ namespace ThegameioRacing.EditorTools
                 matMetal, matBillboardCity,
                 boardWidth: 9.5f, boardHeight: 4.8f, postHeight: 6f);
 
-            // "THEGAMEIO RACING" Billboard (Left, Z = 92m)
+            // "GAMEIUM" Billboard (Left, Z = 92m)
             StreetPropsBuilder.CreateUrbanBillboard(
                 sceneRoot.transform,
                 new Vector3(buildingLineLeft - 1.5f, 0.18f, 92f),
@@ -300,7 +300,7 @@ namespace ThegameioRacing.EditorTools
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            Debug.Log($"[THEGAMEIO] Gate A Scene successfully generated and verified at: {SCENE_PATH}");
+            Debug.Log($"[GAMEIUM] Gate A Scene successfully generated and verified at: {SCENE_PATH}");
         }
 
         private static void SetupNightLighting(GameObject root)

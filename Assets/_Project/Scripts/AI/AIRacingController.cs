@@ -147,17 +147,21 @@ namespace ThegameioRacing.AI
             // Speed & Throttle/Brake regulation
             float targetSpeed = currentWaypoint.TargetSpeedKmh * skillFactor;
 
-            // Rubber-banding (tune speed based on distance to player)
+            // Rubber-banding (tune speed based on distance to player along racing line)
             if (enableRubberBanding && playerTransform != null)
             {
-                float playerDistZ = transform.position.z - playerTransform.position.z;
-                if (playerDistZ > 45f) // AI far ahead: ease off
+                Vector3 toPlayer = playerTransform.position - transform.position;
+                toPlayer.y = 0f;
+                float forwardDot = Vector3.Dot(transform.forward, toPlayer);
+                float dist = toPlayer.magnitude;
+
+                if (forwardDot < -25f && dist > 35f) // Player is behind AI: ease off slightly
                 {
-                    targetSpeed *= 0.88f;
+                    targetSpeed *= 0.90f;
                 }
-                else if (playerDistZ < -45f) // AI far behind: catch up
+                else if (forwardDot > 25f && dist > 35f) // Player is ahead of AI: catch up
                 {
-                    targetSpeed *= 1.15f;
+                    targetSpeed *= 1.12f;
                 }
             }
 
@@ -230,3 +234,4 @@ namespace ThegameioRacing.AI
         }
     }
 }
+

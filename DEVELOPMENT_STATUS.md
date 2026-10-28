@@ -1,4 +1,4 @@
-# THEGAMEIO RACING — DEVELOPMENT STATUS & INTEGRITY AUDIT REPORT
+# GAMEIUM — DEVELOPMENT STATUS & INTEGRITY AUDIT REPORT
 
 **Audit Date:** October 28, 2026  
 **Unity Version:** 6000.6.2f1 (770e33f6875c)  
@@ -68,7 +68,7 @@
 ### 5. Frontend Navigation & 3D Interactive Garage Showcase
 - **Files:** `Assets/_Project/Scripts/UI/MainMenuManager.cs`, `Assets/_Project/Scenes/MainMenu.unity`
 - **Features Implemented:**
-  - **Title Screen:** "THEGAMEIO RACING", "African Coastal Metropolis at Night", Race Now, Garage, Gate A Sample, Exit.
+  - **Title Screen:** "GAMEIUM", "African Coastal Metropolis at Night", Race Now, Garage, Gate A Sample, Exit.
   - **3D Showroom Turntable:** Smooth rotating platform disc with glowing accent ring, studio key light, overhead center soft spot, and gold rim backlight.
   - **Interactive Vehicle Switcher:** `<` and `>` arrow buttons smoothly cycling through all 5 vehicles from `VehicleDatabase`.
   - **Dynamic Spec Card:** Live display of Vehicle Name, Role Badge, Description, and 4 colored stat rating bars (Top Speed, Acceleration, Handling, Braking).

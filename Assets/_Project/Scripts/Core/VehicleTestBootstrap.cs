@@ -281,7 +281,7 @@ namespace ThegameioRacing.Core
             gearTxt.rectTransform.anchoredPosition = new Vector2(0f, -32f);
 
             // Title Banner
-            Text titleTxt = CreateUIText("TitleText", canvasObj.transform, "THEGAMEIO RACING // VEHICLE TEST", 18, FontStyle.Bold, new Color(0.95f, 0.85f, 0.2f), TextAnchor.UpperLeft);
+            Text titleTxt = CreateUIText("TitleText", canvasObj.transform, "GAMEIUM // VEHICLE TEST", 18, FontStyle.Bold, new Color(0.95f, 0.85f, 0.2f), TextAnchor.UpperLeft);
             titleTxt.rectTransform.anchorMin = new Vector2(0.04f, 0.95f);
             titleTxt.rectTransform.anchorMax = new Vector2(0.04f, 0.95f);
             titleTxt.rectTransform.anchoredPosition = new Vector2(160f, -20f);

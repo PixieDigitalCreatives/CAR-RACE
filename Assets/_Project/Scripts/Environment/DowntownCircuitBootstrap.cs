@@ -399,7 +399,7 @@ namespace ThegameioRacing.Environment
             StreetPropsBuilder.CreateUrbanBillboard(landmarks.transform, new Vector3(16f, 0f, 30f), Quaternion.Euler(0f, 20f, 0f),
                 matMetal, matBillboardCity, 10f, 5f, 6.5f);
 
-            // Sector 2: Ocean Boulevard Cafes & Thegameio Billboard
+            // Sector 2: Ocean Boulevard Cafes & GAMEIUM Billboard
             StreetPropsBuilder.CreateStorefront(landmarks.transform, new Vector3(200f, 0f, 358f), Quaternion.Euler(0f, 180f, 0f),
                 matPlaster, matSignCafe, matAwning, matGlass, matMetal, "Ocean_Cafe");
 
@@ -463,6 +463,7 @@ namespace ThegameioRacing.Environment
             raceRoot.transform.SetParent(transform, false);
 
             CheckpointManager cpManager = raceRoot.AddComponent<CheckpointManager>();
+            cpManager.SetTotalLaps(totalLaps);
             RaceManager raceManager = raceRoot.AddComponent<RaceManager>();
 
             // 12 Sequential Checkpoints forming closed loop

@@ -14,8 +14,6 @@ namespace ThegameioRacing.UI
         [SerializeField] private Text gearText;
         [SerializeField] private Text carNameText;
         [SerializeField] private Image rpmFillBar;
-        [SerializeField] private Image throttleFillBar;
-        [SerializeField] private Image brakeFillBar;
         [SerializeField] private GameObject handbrakeAlert;
 
         [Header("Race Progression Elements")]
@@ -112,7 +110,7 @@ namespace ThegameioRacing.UI
                 Text wwText = CreateTextElement("WrongWay_Label", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
                     Vector2.zero, new Vector2(440f, 70f), 38, TextAnchor.MiddleCenter, Color.white, defaultFont);
                 wwText.transform.SetParent(wwObj.transform, false);
-                wwText.text = "⚠ WRONG WAY! ⚠";
+                wwText.text = "[!] WRONG WAY - TURN BACK [!]";
                 wwText.fontStyle = FontStyle.Bold;
 
                 wrongWayBanner = wwObj;
@@ -198,7 +196,7 @@ namespace ThegameioRacing.UI
 
             if (carNameText != null && targetVehicle.Config != null)
             {
-                carNameText.text = $"THEGAMEIO RACING  //  {targetVehicle.Config.displayName.ToUpper()}";
+                carNameText.text = $"GAMEIUM  //  {targetVehicle.Config.displayName.ToUpper()}";
             }
 
             if (rpmFillBar != null)

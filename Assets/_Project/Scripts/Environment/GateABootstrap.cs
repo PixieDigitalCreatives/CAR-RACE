@@ -323,7 +323,7 @@ namespace ThegameioRacing.Environment
                 streetRoot.transform, new Vector3(bldLineRight + 1.5f, 0.18f, 14f), Quaternion.Euler(0f, 15f, 0f),
                 matMetal, matBillboardCity, 9.5f, 4.8f, 6f);
 
-            // Left Billboard ("THEGAMEIO RACING" at Z = 92m)
+            // Left Billboard ("GAMEIUM" at Z = 92m)
             StreetPropsBuilder.CreateUrbanBillboard(
                 streetRoot.transform, new Vector3(bldLineLeft - 1.5f, 0.18f, 92f), Quaternion.Euler(0f, -15f, 0f),
                 matMetal, matBillboardThegameio, 9.5f, 4.8f, 6f);

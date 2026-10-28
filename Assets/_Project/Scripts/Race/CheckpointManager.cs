@@ -43,6 +43,11 @@ namespace ThegameioRacing.Race
         public int CheckpointCount => checkpoints.Count;
         public IReadOnlyList<RacerProgress> Leaderboard => leaderboard;
 
+        public void SetTotalLaps(int laps)
+        {
+            totalLaps = Mathf.Max(1, laps);
+        }
+
         public void SetCheckpoints(List<Checkpoint> newCheckpoints)
         {
             checkpoints = newCheckpoints;
@@ -61,7 +66,7 @@ namespace ThegameioRacing.Race
             {
                 vehicle = vehicle,
                 currentLap = 1,
-                nextCheckpointIndex = 0,
+                nextCheckpointIndex = 1,
                 currentLapTime = 0f,
                 bestLapTime = float.MaxValue,
                 totalRaceTime = 0f,
@@ -137,20 +142,14 @@ namespace ThegameioRacing.Race
                     AudioSource.PlayClipAtPoint(chime, cp.transform.position, 0.85f);
                 }
 
-                // Advance to next checkpoint
-                p.nextCheckpointIndex++;
-
-                // Completed all checkpoints on this lap?
-                if (p.nextCheckpointIndex >= checkpoints.Count)
-                {
-                    p.nextCheckpointIndex = 0; // Ready for finish line / lap line
-                }
-
-                // If hit finish line and not on first trigger before starting
-                if (cp.IsFinishLine && (p.totalRaceTime > 1.0f || cpIndex > 0))
+                // If hit finish line as the target checkpoint, complete the lap
+                if (cp.IsFinishLine)
                 {
                     CompleteLap(vehicle, p);
                 }
+
+                // Advance sequentially to next checkpoint (wraps 1 -> ... -> 11 -> 0 -> 1)
+                p.nextCheckpointIndex = (p.nextCheckpointIndex + 1) % checkpoints.Count;
             }
         }
 
@@ -195,8 +194,9 @@ namespace ThegameioRacing.Race
                 Checkpoint targetCp = checkpoints[p.nextCheckpointIndex];
                 float distToTarget = Vector3.Distance(p.vehicle.transform.position, targetCp.transform.position);
 
+                int effectiveCpProgress = (p.nextCheckpointIndex == 0) ? checkpoints.Count : p.nextCheckpointIndex;
                 // Score formula: Higher is further ahead
-                p.raceProgressScore = (p.currentLap * 10000f) + (p.nextCheckpointIndex * 100f) - Mathf.Clamp(distToTarget, 0f, 500f);
+                p.raceProgressScore = (p.currentLap * 10000f) + (effectiveCpProgress * 100f) - Mathf.Clamp(distToTarget, 0f, 500f);
             }
 
             // Sort descending by score

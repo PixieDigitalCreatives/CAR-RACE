@@ -35,7 +35,6 @@ namespace ThegameioRacing.Camera
 
         [Header("Damping & Physics")]
         [SerializeField] private float positionDamping = 12f;
-        [SerializeField] private float rotationDamping = 10f;
         [SerializeField] private float lookAtDamping = 15f;
 
         [Header("Speed Dynamics")]

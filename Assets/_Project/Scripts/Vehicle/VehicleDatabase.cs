@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ThegameioRacing.Vehicle
 {
-    [CreateAssetMenu(fileName = "VehicleDatabase", menuName = "THEGAMEIO Racing/Vehicle Database", order = 2)]
+    [CreateAssetMenu(fileName = "VehicleDatabase", menuName = "GAMEIUM/Vehicle Database", order = 2)]
     public class VehicleDatabase : ScriptableObject
     {
         [Header("Canonical Vehicle List")]
